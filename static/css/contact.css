@@ -1,0 +1,78 @@
+.contact{
+    
+    Margin: auto;
+    box-sizing: border-box;
+    text-align: center;
+    width: 40%;
+    height: auto;
+    background: #FFFFFF;
+    border-radius: 50px;
+}
+.Greenblock{
+    width: 100%;
+    height: 44px;
+    left: 0px;
+    top: 258px;
+    background: #124747;
+}
+.abovetext{
+    margin-left: 10%;
+    text-align: left;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 300%;
+    letter-spacing: 0.01em;
+}
+.profile{
+    margin-left: 10%;
+    text-align: left;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 300%;
+    letter-spacing: 0.01em;
+    color: #6DE1C2;
+    
+}
+.input{
+    margin-top: 5%;
+    margin-left: 10%;
+    text-align: left;
+    border: none;
+}
+.input text{
+    border-top: none;
+}
+.bottom-text{
+    margin-top: 2%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: medium;
+    color: #9B9B9B;
+
+}
+.leftDiv{
+    float:left;
+    padding:38px;
+    margin-left: 370px;
+    padding-right: 0px;
+    margin-right: 0px;
+  }
+  
+.rightDiv{
+    float:right;
+    padding:38px;
+    margin-right: 482px;
+    padding-left: 0px;
+    margin-left: 0px;
+  }
+@media only screen and (max-width:768px){
+    /*for mobile phone*/
+
+    .contact{
+        width:550px;
+    }
+    .footer{
+        margin-left: -15px;
+    }
+}

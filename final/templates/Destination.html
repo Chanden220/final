@@ -1,0 +1,95 @@
+{% extends 'header.html' %}
+{%load static%}
+{% block main_body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/Destination.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+    <!-- Head -->
+    <div class="header">
+        <center>
+            <h3>Find yourself outside. </h3>
+            <p>Discover a wonderful please in Cambodia</p>
+            <form method="get" action="Destination-search.html">
+                <div class="menu-search">
+
+                    <div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <input type="text" placeholder="Search Destinations" name="search" id="">
+                    </div>
+                    <div>
+                        <input style="color: white;" type="submit" value="Search" name="" id="Search-button">
+                    </div>
+                </div>
+            </form>
+        </center>
+    </div>
+
+
+    <div class="text-body">
+        <h3>Camping Trip: </h3>
+
+        <h3>Where to Go: </h3>
+        <p>
+            <br>
+        </p>
+        <br>
+    </div>
+
+    <div class="the-destination" style="width:100%">
+        <!-- first destination -->
+        <div class="knongpsar">
+            <a href="FirstDestination.html"><img src="" alt=""></a>
+            <div class="knongpsar-info">
+                <b>
+                    <h4>
+
+                    </h4>
+                </b>
+                <b>
+
+                </b><br><br>
+                <p>
+
+                </p>
+                <p>--------</p>
+
+                <p>Team :
+
+                </p>
+                <p>Phone Number :
+
+                </p>
+                <p>Email :
+
+                </p>
+                <p>Service :
+
+                </p>
+                <p>Date :
+
+                </p>
+
+                <a href="contact.html"><input type="button" value="Booking" name="" id=""></a>
+            </div>
+        </div>
+        <br>
+
+
+    </div>
+
+</body>
+{% endblock main_body %}

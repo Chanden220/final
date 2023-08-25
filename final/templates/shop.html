@@ -1,0 +1,151 @@
+{% extends 'header.html' %}
+{%load static%}
+{% block main_body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{%static 'css/shop.css' %}" rel="stylesheet" />
+</head>
+<style>
+    .nanan {
+        margin-left: 7%;
+    }
+
+    .AllPro {
+        padding: 25px;
+        font-family: Segoe UI Variable Text Semibold;
+    }
+
+    .submitsa {
+        width: 70px;
+        font-size: medium;
+        color: #FFDF2B;
+        background-color: #066173;
+        border: 0px;
+        border-radius: 20px;
+    }
+</style>
+<h1 align="center" style="padding: 25px; font-family: Arial Black;">Welcome To Our Shop</h1>
+<div class="header-line">
+    <hr>
+</div>
+<h2 align="center" style="padding: 25px; font-family: Segoe UI Variable Text Semibold;">Camping</h2>
+
+<body id="page-top">
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a class="btn btn-primary btn-xl" href="shop-category.html?category=Equipment">Campaign
+                        Equipment</a>
+                </div>
+                <div class="col-md-3">
+                    <a class="btn btn-primary btn-xl" href="shop-category.html?category=Tents">Camping Tents</a>
+                </div>
+                <div class="col-md-3">
+                    <a class="btn btn-primary btn-xl" href="shop-category.html?category=Bags">Camping Bags</a>
+                </div>
+                <div class="col-md-3">
+                    <a class="btn btn-primary btn-xl" href="shop-category.html?category=Clothes">Camping Clothes</a>
+                </div>
+            </div>
+            <div class="row nanan" style="">
+                <div class="col-md-4">
+                    <a class=" btn btn-primary btn-xl" href="shop-category.html?category=Shoes">Camping Shoes</a>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-primary btn-xl" href="shop-category.html?category=Accessory">Camping
+                        Accessories</a>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-primary btn-xl" href="shop-category.html?category=Shelters">Camping Shelters</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <form action="shop_search.html" method="get">
+        <div id="contain-search" align="center" style="  margin-top: 15%;">
+            <a href="cart.html"><img src="{% static 'Camping/add_shopping_cart_80px.png' %}"
+                    style="width: 40px; margin-right: 2px;"></a>
+            <input type="search" placeholder="search" name="search" id=""
+                style=" border-color: #066173; width: 400px; border-radius: 20px;">
+            <input type="submit" value="Search" class="submitsa" style="">
+        </div>
+    </form>
+    <h2 classs="AllPro" align="center">All of the products:</h2>
+    </br>
+
+    <div>
+        <p style="text-align: center;">
+            Number of items:
+        </p>
+    </div>
+    <!-- Camping -->
+    <div id="portfolio">
+        <form method="POST" action="campingtarp.html">
+            <div class="row g-0" align="center">
+
+
+                <!--1-->
+                <div class="col-lg-3">
+                    <div class="card">
+                        <!-- Sale badge-->
+                        <div class="badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+
+                        </div>
+                        <br><br>
+                        <!-- Product image-->
+                        <a href="">
+                            <img class="card-img-top" src="" alt="..." />
+                        </a>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">
+
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+    </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SimpleLightbox plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+</body>
+
+{% endblock main_body %}

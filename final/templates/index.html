@@ -1,0 +1,101 @@
+{% extends 'header.html' %}
+{%load static%}
+{% block main_body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{%static 'css/Homepage.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+
+    <!-- head -->
+    <div class="header">
+        <div class="banner">
+            <img src="{%static 'Camping/Page img/photo_1_2023-03-12_15-22-03.jpg'%}" alt="">
+            <center>
+                <h1>
+
+                </h1>
+                <a href="{% url 'onedaytwogether:contact' %}"><input type="button" name="" value="Book Now" id=""></a>
+            </center>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="info">
+        <div class="info-text">
+            <center>
+                <h1>
+                    Camping In <br> Cambodia Through <br> <span style="color: #FFF505;">1</span>Day2<span
+                        style="color: #FFF505;">G</span>ether
+                </h1><br><br>
+                <p>We offer you a place and a wide of camping <br> supplies to make your selection enjoyable <br>
+                    and make a perfect connection between you <br> and nature. </p><br><br>
+                <p>
+                    Check out our different varieties camping <br> supplies and our services!</p>
+            </center>
+        </div>
+        <div class="info-img">
+            <img class="classA" src="{%static 'Camping\Page img\photo_2_2023-03-12_15-22-03.jpg'%}" alt="">
+            <img class="classB" src="{%static 'Camping\Page img\photo_3_2023-03-12_15-22-03.jpg'%}" alt="">
+        </div>
+    </div>
+    <div class="destination">
+        <div class="khnong-phsar">
+            <a href="FirstDestination.html"><img src="" alt=""></a>
+            <h1>
+
+            </h1>
+        </div>
+        <div class="khnong-phsar">
+            <img src="" alt="">
+            <h1>
+
+            </h1>
+        </div>
+        <div class="khnong-phsar">
+            <img src="" alt="">
+            <h1>
+
+            </h1>
+        </div>
+    </div>
+    <div class="shop">
+        <div class="shop-img">
+            <img src="" alt="">
+        </div>
+        <div class="shop-info">
+            <h1>Shop for your</h1>
+            <h2>supplies!</h2>
+            <p>We offer varieties of camping <br> packages for you to choose from, <br> depending on lyour dream
+                <br> destination !
+            </p><br><br>
+            <a href="shop.html"><input type="button" value="        Go to shop" name="btn-shop" id=""></a>
+        </div>
+    </div>
+    <div class="footer" style="background-color: #FFF505;">
+        <div class="info-footer">
+            <img src="" alt="">
+            <p>
+
+            </p>
+        </div>
+
+    </div>
+    <div style="width: 100%;">
+
+    </div>
+
+</body>
+{% endblock main_body %}

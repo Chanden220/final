@@ -1,0 +1,90 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block main_body %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contact</title>
+	<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+	<br>
+	<h1 style="text-align: center;font-size: 300%;">Contact</h1>
+	<div class="Greenblock">
+
+	</div>
+	<br>
+	<br>
+	<div class="contact">
+		<form method="post">
+			<div class="abovetext"><br>
+				<p>Get in <span style="color:#124747">touch</span></p>
+
+			</div>
+			<div class="input">
+				<input id="text" type="text" name="Name" placeholder="Name"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;"><br><br>
+				<input id="text" type="text" name="Street" placeholder="Street"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<input id="text" type="text" name="City" placeholder="City"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:45%;margin-top:2%">
+				<input id="text" type="text" name="Posscode" placeholder="Posscode"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:29%;margin-top:-25px;margin-left:25px"><br><br>
+				<input id="text" type="text" name="ContactNumber" placeholder="Contact Number"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<input id="text" type="text" name="email" placeholder="Email"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<select class="form-control" name="Location" style="width:80%">
+
+					<option value=""></option>
+
+				</select>
+				<input id="text" type="text" name="lettalk" placeholder="Let talk"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+
+				<br>
+				<br>
+				<br>
+
+				<input id="button" type="submit" value="Submit"
+					style="margin-top:2%;font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px"><br>
+			</div>
+
+
+			<div class="phone">
+				<br>
+				<img src="{% static 'image/Screenshot 203-04-18 153933.png' %}"
+					style="width: 28px;height: 28px;margin-left:-70%">
+				<p class="phonetext">
+					Phone <br>(+855) 456 7890</p>
+			</div>
+			<div class="Email" style="">
+				<br>
+				<img src="{% static 'image/email.png' %}" style="width: 28px;height: 28px;margin-left:-90%">
+				<p class="phonetext">
+					Email <br>1day2gethercamp@gmail.com</p>
+			</div>
+
+		</form>
+
+	</div>
+
+</body>
+
+</html>
+<div style="width:100%">
+
+</div>
+{% endblock main_body %}

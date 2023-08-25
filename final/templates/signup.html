@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Signup</title>
+	<link rel="stylesheet" href="{% static 'css/login&signup.css' %}">
+</head>
+
+<body>
+	<div class=" navbar" align=center>
+		<img src="{% static 'image/logo.png' %}"" style=" height: 80px;">
+	</div>
+	<div class="line" style="height: 2px; background-color:#9B9B9B; text-align: center;width:100%;">
+	</div>
+	<a href="index.html" style="margin: auto;text-decoration:none;margin-left:1%">Home</a>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="signup">
+		<form method="post" enctype="multipart/form-data">
+			<div class="abovetext"><br>COMPLETE YOUR</div>
+			<div class="profile">PROFILE</div>
+			<div class="input">
+				<p>Profile Image :</p>
+				<input type="file" name="file" id="fileToUpload"><br>
+				<input id="text" type="text" name="first_name" placeholder="First Name"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;"><br><br>
+				<input id="text" type="text" name="last_name" placeholder="Last Name"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<input id="text" type="text" name="user_name" placeholder="User Name"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<input id="text" type="text" name="birthdate" placeholder="Birth Date(YYYY/MM/DD)"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<input id="text" type="text" name="email" placeholder="Email"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<input id="text" type="password" name="password" placeholder="Password"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<input id="text" type="password" name="repassword" placeholder="Repeat Password"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<input id="text" type="text" name="phone" placeholder="Phone"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<input id="text" type="text" name="address" placeholder="Address"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+
+				<input id="button" type="submit" value="Create"
+					style="margin-top:2%;font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px"><br><br>
+			</div>
+
+		</form>
+	</div>
+
+
+</body>
+
+</html>

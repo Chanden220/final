@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+	<link rel="stylesheet" href="{% static 'css/login&signup.css' %}">
+</head>
+
+<body>
+	<div align=center>
+		<img src="{% static 'image/logo.png' %}"" style=" height: 80px;">
+	</div>
+	<div class="line" style="height: 2px; background-color:#9B9B9B; text-align: center;width:100%;">
+	</div>
+	<a href="index.html" style="margin: auto;text-decoration:none;margin-left:1%">Home</a>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="login">
+		<form method="post">
+			<div class="profile"><br>Login</div>
+			<div class="input">
+				<input id="text" type="text" name="email" placeholder="Email"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<input id="text" type="password" name="password" placeholder="Password"
+					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+
+				<input id="button" type="submit" value="NEXT"
+					style="margin-top:2%;font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px"><br><br>
+			</div>
+			<div class="socail"
+				style="height: 2px; background-color:#9B9B9B; text-align: center;width:73%;margin-left:10%;margin-top:4%">
+				<span
+					style="background-color: white; position: relative; top: -0.6em;font-family: 'Inter';font-style: normal;font-weight: 600;font-size: medium;color: #9B9B9B;">
+					Socail Login
+				</span>
+			</div>
+			<div class="icon" style="margin-right:6%;margin-top:2%">
+				<img src="image/facebook_100px.png" style="margin-right:5%">
+				<img src="image/google_100px.png">
+			</div>
+			<div class="bottom-text">
+				You do not have an account?
+			</div>
+			<a href="signup.html" class="btn btn-default"
+				style="margin-bottom:4%;width:75%;margin-top:4%;color:blue;background: #9B9B9B;font-size:large;">CREATE
+				YOUR ACCOUNT HERE</a>
+
+		</form>
+
+	</div>
+
+</body>
+
+</html>
