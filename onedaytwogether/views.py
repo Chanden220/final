@@ -34,4 +34,13 @@ class AboutusView(View):
     
     def get(self, request):
         return render(request, self.template_name)
-  
+class LoginView(View):
+    template_name = 'login.html'
+    
+    def get(self, request):
+        return render(request, self.template_name)
+class SignupView(View):
+    template_name = 'signup.html'
+    
+    def get(self, request):
+        return render(request, self.template_name)

@@ -50,7 +50,7 @@
     background: white;
     border-radius: 6px;
     margin-left: 89%;
-    margin-top: 5%;
+    margin-top: 4%;
     position: absolute;
     transform: translate(-50%,-50%);
     text-align: center;
@@ -138,7 +138,7 @@
 }
 .ButtonLS button{
     padding: 10px;
-    margin-top: 13%;
+    margin-top: 10%;
     border-radius: 15px;
 }
 /* destination */

@@ -13,7 +13,9 @@ urlpatterns = [
     re_path('^Destination/$', onedaytwogether_view.DestinationView.as_view(), name='Destination'),
     re_path('^Shop/$', onedaytwogether_view.ShopView.as_view(), name='shop'),
     re_path('^Contact/$', onedaytwogether_view.ContactView.as_view(), name='contact'),
-    re_path('^Aboutus/$', onedaytwogether_view.AboutusView.as_view(), name='Aboutus')
+    re_path('^Aboutus/$', onedaytwogether_view.AboutusView.as_view(), name='Aboutus'),
+    re_path('^Login/$', onedaytwogether_view.LoginView.as_view(), name='Login'),
+    re_path('^Signup/$', onedaytwogether_view.SignupView.as_view(), name='Signup')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
