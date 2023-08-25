@@ -19,9 +19,11 @@
 </head>
 
 <body>
-
-	<br>
-	<h1 style="text-align: center;font-size: 300%;">Contact</h1>
+	<div class="header">
+		<center>
+			<h3>Contact</h3>
+		</center>
+	</div>
 	<div class="Greenblock">
 
 	</div>
@@ -54,28 +56,26 @@
 				<input id="text" type="text" name="lettalk" placeholder="Let talk"
 					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
 
-				<br>
-				<br>
-				<br>
-
-				<input id="button" type="submit" value="Submit"
-					style="margin-top:2%;font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px"><br>
-			</div>
 
 
-			<div class="phone">
-				<br>
-				<img src="{% static 'image/Screenshot 203-04-18 153933.png' %}"
-					style="width: 28px;height: 28px;margin-left:-70%">
-				<p class="phonetext">
-					Phone <br>(+855) 456 7890</p>
+				<input id="button" type="submit" value="Submit" class="Submitbtn" style=""><br>
 			</div>
-			<div class="Email" style="">
-				<br>
-				<img src="{% static 'image/email.png' %}" style="width: 28px;height: 28px;margin-left:-90%">
-				<p class="phonetext">
-					Email <br>1day2gethercamp@gmail.com</p>
+
+			<div class="row">
+				<div class="phone col-sm">
+					<br>
+					<img src="{% static 'image/Screenshot 203-04-18 153933.png' %}">
+					<p class="phonetext">
+						Phone <br>(+855) 456 7890</p>
+				</div>
+				<div class="Email col-sm">
+					<br>
+					<img src="{% static 'image/email.png' %}">
+					<p class="emailtext">
+						Email <br>1day2gethercamp@gmail.com</p>
+				</div>
 			</div>
+
 
 		</form>
 

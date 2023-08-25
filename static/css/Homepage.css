@@ -42,14 +42,15 @@
     display: block;
 }
 .User{
+
     display: none;
     z-index: 1;
-    width: 32%;
+    width: 21%;
     height: fit-content;
     background: white;
     border-radius: 6px;
-    margin-left: 83%;
-    margin-top: 7%;
+    margin-left: 89%;
+    margin-top: 5%;
     position: absolute;
     transform: translate(-50%,-50%);
     text-align: center;
@@ -62,12 +63,7 @@
     width: 50px;
     height: auto;
 }
-.button-btn button{
-    background-color: white;
-    width: 30%;
-    text-align: center;
-    color: blue;
-}
+
 .fa-user{
     font-size: 20px;
 }
@@ -136,6 +132,14 @@
     /* width: 649px;*/
     height: 400px; 
     margin: 0px 25px 25px 25px;
+}
+.ButtonLS{
+    height: 100px;
+}
+.ButtonLS button{
+    padding: 10px;
+    margin-top: 13%;
+    border-radius: 15px;
 }
 /* destination */
 
@@ -284,7 +288,7 @@
     height: 270px;
     background: white;
     border-radius: 6px;
-    margin-left:74%;
+    margin-left:89%;
     margin-top: 190px;
     position: absolute;
     transform: translate(-50%,-50%);

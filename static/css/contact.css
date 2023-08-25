@@ -1,6 +1,6 @@
 .contact{
-    
-    Margin: auto;
+    Margin-top: -2%;
+    Margin-left: 34%;
     box-sizing: border-box;
     text-align: center;
     width: 40%;
@@ -8,11 +8,12 @@
     background: #FFFFFF;
     border-radius: 50px;
 }
+.Submitbtn{
+   font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px;
+}
 .Greenblock{
-    width: 100%;
-    height: 44px;
-    left: 0px;
-    top: 258px;
+    width: 99%;
+    height: 22px;
     background: #124747;
 }
 .abovetext{
@@ -20,7 +21,7 @@
     text-align: left;
     font-family: 'Montserrat';
     font-style: normal;
-    font-size: 300%;
+    font-size: 230%;
     letter-spacing: 0.01em;
 }
 .profile{
@@ -49,6 +50,29 @@
     font-weight: 600;
     font-size: medium;
     color: #9B9B9B;
+
+}
+.phonetext{
+    margin-top: -15%;
+    margin-left: 40%;
+    text-align: left;
+}
+.emailtext{
+    margin-top: -15%;
+    margin-left: 40%;
+    text-align: left;
+}
+.phone img{
+    width: 28px;
+    height: 28px;
+    margin-left: -33%;
+    margin-top: -6%;
+}
+.Email img{
+    width: 31px;
+    height: 31px;
+    margin-left: -69%;
+    margin-top: -7%;
 
 }
 .leftDiv{
