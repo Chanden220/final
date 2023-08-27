@@ -90,9 +90,9 @@
 }
 /* text-body */
 .Greenblock{
-    width: 99%;
-    height: 22px;
-    background: #124747;
+width: 99%;
+height: 22px;
+background: #124747;
 }
 .text-body{
   background-color: #124747;
@@ -109,29 +109,26 @@
 }
 /* about */
 
-.the-destination{
-    width: 100vw;
 
-}
-.the-destination .knongpsar{
-    display: flex;
+.knongpsar{
+
     width: 100%;
     padding: 25px 15px 0px 15px;
     font-size: 30px;
 
 }
-.the-destination .knongpsar img{
-    width: 45vw;
+.knongpsar img{
+    width: 100%;
     font-size: 30px;
 
 }
-.the-destination .knongpsar .knongpsar-info{
+.knongpsar .knongpsar-info{
     width: 45vw;
     padding-left: 15px ;
     font-size: 30px;
 
 }
-.the-destination .knongpsar .knongpsar-info input{
+.knongpsar .knongpsar-info input{
     border: 1px solid #208390;
     background-color: white;
     color: #208390;

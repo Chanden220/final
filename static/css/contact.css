@@ -56,11 +56,13 @@
     margin-top: -15%;
     margin-left: 40%;
     text-align: left;
+    font-size: small;
 }
 .emailtext{
-    margin-top: -15%;
-    margin-left: 40%;
+margin-top: -15%;
+    margin-left: -7%;
     text-align: left;
+    font-size: small;
 }
 .phone img{
     width: 28px;
@@ -71,7 +73,7 @@
 .Email img{
     width: 31px;
     height: 31px;
-    margin-left: -69%;
+    margin-left: -130%;
     margin-top: -7%;
 
 }
@@ -147,29 +149,29 @@
 
 }
 .phonetext{
-    margin-top: -15%;
-    margin-left: 40%;
+    margin-top: -10%;
+    margin-left: 28%;
     text-align: left;
     font-size: small;
 }
+
 .emailtext{
     margin-top: -15%;
-    margin-left: 40%;
+    margin-left: 28%;
     text-align: left;
-        font-size: small;
+    font-size: small;
 }
 .phone img{
     width: 28px;
     height: 28px;
-    margin-left: -33%;
+    margin-left: -64%;
     margin-top: -6%;
 }
 .Email img{
     width: 31px;
     height: 31px;
-    margin-left: -109%;
-    margin-top: -7%;
-
+    margin-left: -63%;
+    margin-top: -15%;
 }
 .leftDiv{
     float:left;
