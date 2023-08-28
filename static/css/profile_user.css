@@ -79,6 +79,6 @@
     color: white;
 }
  #bar{
-    display: block;
+    display: block !important;
 }
 }

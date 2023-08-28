@@ -15,31 +15,10 @@
 .menu-logo img{
     width: 120px;
 }
-.menu-link{
 
-}
-.menu-link ul{
-    list-style: none;
-    display: flex;
-}
-.menu-link ul li{
-    padding: 28px 25px;
-}
-.menu-link ul li:hover a{
-    /* background-color: darkgrey; */
-}
-.menu-link ul li a{
-    color: black;
-    text-decoration: none;
-}
 .menu-icon{
     padding-top: 32px;
     display: flex;
-}
-#bar{
-    display: none;
-    font-size: 17px;
-    margin-right: 10px;
 }
 .fa-user{
     font-size: 17px;
