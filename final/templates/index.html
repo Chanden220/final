@@ -15,46 +15,184 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+        <style>
+            /* Adjust the styles based on screen size and zoom level */
+            .header {
+                height: 100vh;
+            }
+    
+            .banner {
+                height: 80%;
+            }
+    
+            .slides img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+    
+            .info {
+                padding: 2rem;
+            }
+    
+            /* Adjust the styles based on screen size */
+            @media (max-width: 768px) {
+                .banner {
+                    height: auto;
+                }
+            }
+
+@keyframes fade{
+  from{
+    opacity:0.9;
+	background-position: 0% 50%;
+  }
+  to{
+    opacity:1;
+  }
+}
+
+#slider{
+  margin:0 auto;
+  width:100%;
+  overflow:hidden;
+}
+
+.slides{
+  overflow:hidden;
+  animation-name:fade;
+  animation-duration:1s;
+  display:none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+img{
+  width:100%;
+}
+
+#dot{
+  margin-top:0px;
+  text-align:center;
+}
+.dot{
+  display:inline-block;
+  border-radius:50%;
+  background:#d3d3d3;
+  padding:8px;
+  margin:10px 5px;
+}
+
+.active{
+  background:rgb(2, 80, 37);
+}
+
+@media (max-width:567px){
+  #slider{
+    width:100%;
+
+  }
+}
+
+#heading{
+  display:block;
+  text-align:center;
+  font-size:2em;
+  margin:10px 0px;
+
+}
+.infor {
+        position: absolute;
+        top: 40%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        text-align:justify ;
+        color: white;
+        max-width: 450px; /* Set the maximum width for the paragraph */
+    }
+
+    .infor h2 {
+        font-size: 70px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .infor p {
+        font-size: 16px;
+
+    }
+    @media (max-width: 768px) {
+    .infor {
+        top: 20%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        max-width: 100%;
+    }
+    .infor h2 {
+        font-size: 20px;
+    }
+
+    .infor p {
+        font-size: 11px;
+    }
+
+}
+ </style>
+
 </head>
 
 <body>
 
 
-    <!-- head -->
-    <div class="header">
-        <div class="banner">
-            <img src="{%static 'Camping/Page img/photo_1_2023-03-12_15-22-03.jpg'%}" alt="">
-            <center>
-                <h1>
+    <div id="slider"> 
+        <div class="slides">  
+            <img src="{%static 'img/homepage1.jpg'%}" alt="">
+        </div>
+        <div class="slides">  
+            <img src="{%static 'img/homepage2.jpg'%}" alt="">
+        </div>
+        <div class="slides">  
+            <img src="{%static 'img/homepage3.jpg'%}" alt="">
+        </div> 
 
-                </h1>
-                <a href="{% url 'onedaytwogether:contact' %}"><input type="button" name="" value="Book Now" id=""></a>
-            </center>
+        <div class="infor">
+            <h2>Welcome</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+        <div id="dot">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div> 
+    </div>
+        
         </div>
     </div>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
     <div class="info">
         <div class="info-text">
             <center>
                 <h1>
-                    Camping In <br> Cambodia Through <br> <span style="color: #FFF505;">1</span>Day2<span
-                        style="color: #FFF505;">G</span>ether
+                    Camping In <br> Cambodia Through <br> <span style="color: #305D34;">1</span>Day2<span
+                        style="color: #305D34;">G</span>ether
                 </h1><br><br>
-                <p>We offer you a place and a wide of camping <br> supplies to make your selection enjoyable <br>
-                    and make a perfect connection between you <br> and nature. </p><br><br>
-                <p>
-                    Check out our different varieties camping <br> supplies and our services!</p>
+                <blockquote class="quote">
+                    <div class="quote-line"></div>
+                    <p>We offer you a place and a wide range of camping supplies to make your selection enjoyable
+                        and create a perfect connection between you and nature.</p><br>
+                </blockquote>
+                <p>Check out our different varieties of camping supplies and our services!</p>
             </center>
         </div>
         <div class="info-img">
-            <img class="classA" src="{%static 'Camping\Page img\photo_2_2023-03-12_15-22-03.jpg'%}" alt="">
-            <img class="classB" src="{%static 'Camping\Page img\photo_3_2023-03-12_15-22-03.jpg'%}" alt="">
+            <img class="classA" src="{%static 'img/camp3.jpg'%}" alt="">
+            
         </div>
     </div>
     <div class="destination">
+        <br><br><br><br><br>
+        <p>EXPLORE OUR DESTINATION</p>
         <div class="khnong-phsar">
-            <a href="FirstDestination.html"><img src="" alt=""></a>
+            <a href="FirstDestination.html"><img src="{%static 'img/pt.jpg'%}" alt=""></a>
             <h1>
 
             </h1>
@@ -97,6 +235,38 @@
     <div style="width: 100%;">
 
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+     var index = 0;
+    var slides = document.querySelectorAll(".slides");
+    var dot = document.querySelectorAll(".dot");
+    
+    function changeSlide(){
+    
+      if(index<0){
+        index = slides.length-1;
+      }
+      
+      if(index>slides.length-1){
+        index = 0;
+      }
+      
+      for(let i=0;i<slides.length;i++){
+        slides[i].style.display = "none";
+        dot[i].classList.remove("active");
+      }
+      
+      slides[index].style.display= "block";
+      dot[index].classList.add("active");
+      
+      index++;
+      
+      setTimeout(changeSlide,5000);
+      
+    }
+    
+    changeSlide();
+    </script>
 
 </body>
 {% endblock main_body %}

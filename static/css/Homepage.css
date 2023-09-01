@@ -5,12 +5,10 @@
 .menu{
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    padding: 0px 20px;
-
+    height: 50px;
 }
 .menu-logo img{
-    width: 120px;
+    width: 75px;
 }
 
 .menu-link ul{
@@ -18,10 +16,10 @@
     display: flex;
 }
 .menu-link ul li{
-    padding: 28px 25px;
+    padding: 10px 30px;
 }
 .menu-link ul li a{
-    font-size: 25px
+    font-size: 17px
 }
 
 .menu-link ul li a{
@@ -29,7 +27,7 @@
     text-decoration: none;
 }
 .menu-icon{
-    padding-top: 32px;
+    padding-top: 12px;
     display: flex;
 }
 
@@ -108,8 +106,8 @@
 }
 .info-text{
     width: 50%;
-    background-color: #26601D;
-    color: white;
+    background-color: white;
+    color: black;
     font-size: 23px;
     padding-top: 25px;
     margin-bottom: 25px;
@@ -121,9 +119,8 @@
 }
 .info-img .classA{
     border-radius: 263px;
-    border: 2px solid #007180;
-    /* width: 649px; */
-    height: 400px;
+    width: 100%; 
+    height: 100%;
     margin: 25px;
 }
 .info-img .classB{
@@ -143,9 +140,7 @@
 }
 /* destination */
 
-.destination{
-    width: 100%;
-}
+
 .destination div{
     width: 100%;
     position: relative;
@@ -160,7 +155,6 @@
     top: 15%;
     left: 50%;
     transform: translate(-50%,-15%);
-    font-size: 45px;
 }
 
 .shop{
@@ -242,7 +236,57 @@
     margin: 15px 5px;
 }
 
+@keyframes slideIn {
+    0% { transform: translateY(100px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
 
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.info-text h1 {
+    animation: slideIn 1s ease-in-out;
+    font-style: italic;
+    text-transform: uppercase;
+    font-family: 'Gambetta', serif;
+    letter-spacing: -3px;
+    transition: 700ms ease;
+    font-variation-settings: "wght" 311;
+    margin-bottom: 0.8rem;
+    outline: none;
+    text-align: center;
+}
+.info-text p{
+    max-width: 500px;
+}
+.info-text h1:hover{
+        font-variation-settings: "wght" 582; 
+        letter-spacing: 1px;
+}
+.quote {
+    position: relative;
+    padding-left: 50px;
+}
+.destination p{
+    font-weight: bold;
+    font-size: 40px;
+    max-width: 400px;
+    margin-left: 900px;
+}
+
+.quote-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: #305D34;
+}
+.info-text p {
+    animation: fadeIn 1s ease-in-out;
+}
 
 @media (max-width: 738px)
 {
