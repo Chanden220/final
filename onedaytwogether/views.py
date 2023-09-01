@@ -39,6 +39,16 @@ class LoginView(View):
     
     def get(self, request):
         return render(request, self.template_name)
+    def post(self, request, *args, **kwargs): 
+        username = request.POST['email']
+        password = request.POST['password']
+        
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('onedaytwogether:index')
+        else:
+            return redirect('onedaytwogether:Login')
 class SignupView(View):
     template_name = 'signup.html'
     

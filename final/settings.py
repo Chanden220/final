@@ -116,9 +116,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-LOGIN_URL = '/userprofile/login/'
-LOGIN_REDIRECT_URL = '/userprofile'
-LOGOUT_REDIRECT_URL = '/userprofile/login'
+LOGIN_URL = '/onedaytwogether/Login/'
+LOGIN_REDIRECT_URL = '/onedaytwogether'
+LOGOUT_REDIRECT_URL = '/onedaytwogether/Login'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
