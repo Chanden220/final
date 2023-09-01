@@ -24,7 +24,8 @@
 	<br>
 	<br>
 	<div class="login">
-		<form method="post">
+		<form method="post" action="{% url 'onedaytwogether:Login' %}">
+			{% csrf_token %}
 			<div class="profile"><br>Login</div>
 			<div class="input">
 				<input id="text" type="text" name="email" placeholder="Email"
