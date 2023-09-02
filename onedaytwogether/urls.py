@@ -15,7 +15,8 @@ urlpatterns = [
     re_path('^Contact/$', onedaytwogether_view.ContactView.as_view(), name='contact'),
     re_path('^Aboutus/$', onedaytwogether_view.AboutusView.as_view(), name='Aboutus'),
     re_path('^Login/$', onedaytwogether_view.LoginView.as_view(), name='Login'),
-    re_path('^Signup/$', onedaytwogether_view.SignupView.as_view(), name='Signup')
+    re_path('^Signup/$', onedaytwogether_view.SignupView.as_view(), name='Signup'),
+    re_path('^Logout/$', onedaytwogether_view.LogoutView.as_view(), name='Logout')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

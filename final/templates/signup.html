@@ -1,4 +1,4 @@
-{%load static%}
+{% load static %}
 
 <!DOCTYPE html>
 <html>
@@ -8,54 +8,130 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Signup</title>
 	<link rel="stylesheet" href="{% static 'css/login&signup.css' %}">
-	<link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 </head>
+
+<style>
+	.inputna {
+		font-size: medium;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		width: 80%;
+		margin-top: 2%;
+	}
+
+	.imagePreview {
+		display: none;
+		width: 100px;
+		margin-left: 28%;
+		border: 1px black dashed;
+		border-radius: 46%;
+		height: 95px;
+
+	}
+
+	@media (max-width: 738px) {
+		.ca {
+			margin-left: 0% !important;
+			margin-top: 6% !important;
+		}
+	}
+</style>
 
 <body>
 	<div align=center>
-		<img src="{% static 'image/logo.png' %}" style=" height: 80px;">
+		<img src="{% static 'image/logo.png' %}" style="height: 80px;">
 	</div>
-	<div class="line" style="height: 2px; background-color:#9B9B9B; text-align: center;width:100%;">
-	</div>
+	<div class="line" style="height: 2px; background-color:#9B9B9B; text-align: center;width:100%;"></div>
 	<a href="{% url 'onedaytwogether:index' %}" style="margin: auto;text-decoration:none;margin-left:1%">Home</a>
 	<br>
 	<br>
 	<br>
 	<br>
 	<div class="signup">
-		<form method="post" enctype="multipart/form-data">
+		<form method="post" action="{% url 'onedaytwogether:Signup' %}" enctype="multipart/form-data">
+			{% csrf_token %}
 			<div class="abovetext"><br>COMPLETE YOUR</div>
 			<div class="profile">PROFILE</div>
 			<div class="input">
+				<img id="imagePreview" class="imagePreview" src="#" alt="Image Preview" />
 				<p>Profile Image :</p>
-				<input type="file" name="file" id="fileToUpload"><br>
-				<input id="text" type="text" name="first_name" placeholder="First Name"
-					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;"><br><br>
-				<input id="text" type="text" name="last_name" placeholder="Last Name"
-					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
-				<input id="text" type="text" name="user_name" placeholder="User Name"
-					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
-				<input id="text" type="date" name="birthdate" placeholder="Birth Date(YYYY/MM/DD)"
-					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
-				<input id="text" type="text" name="email" placeholder="Email"
-					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
-				<input id="text" type="password" name="password" placeholder="Password"
-					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
-				<input id="text" type="password" name="repassword" placeholder="Repeat Password"
-					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
-				<input id="text" type="text" name="phone" placeholder="Phone"
-					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
-				<input id="text" type="text" name="address" placeholder="Address"
-					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<input type="file" name="file" id="fileToUpload" placeholder="Choose a Picture"><br><br>
+				<div class="row">
+					<div class="col-md-6">
+						<input id="first_name" type="text" name="first_name" placeholder="First Name" class="inputna">
+					</div>
+					<div class="ca col-md-6" style="margin-left: -10%;">
+						<input id="last_name" type="text" name="last_name" placeholder="Last Name" class="inputna">
+					</div>
+				</div>
+				<br>
 
-				<input id="button" type="submit" value="Create"
-					style="margin-top:2%;font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px"><br><br>
+				<input id="user_name" type="text" name="user_name" placeholder="User Name" class="inputna"><br><br>
+				<input id="password" type="password" name="password" placeholder="Password" class="inputna"><br><br>
+				<input id="repassword" type="password" name="repassword" placeholder="Repeat Password"
+					class="inputna"><br><br>
+				<input id="birthdate" type="date" name="birthdate" placeholder="Birth Date(YYYY/MM/DD)"
+					class="inputna"><br><br>
+				<input id="email" type="text" name="email" placeholder="Email" class="inputna"><br><br>
+				<input id="phone" type="text" name="phone" placeholder="Phone" class="inputna"><br><br>
+				<input id="address" type="text" name="address" placeholder="Address" class="inputna"><br><br>
+
+				<input id="submitBtn" type="submit" value="Create"
+					style="margin-top:2%;font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px"
+					disabled><br><br>
 			</div>
-
 		</form>
 	</div>
 
+	<script>
+		// Select the input fields
+		const passwordInput = document.getElementById('password');
+		const repasswordInput = document.getElementById('repassword');
+		const fileInput = document.getElementById('fileToUpload');
+		const imagePreview = document.getElementById('imagePreview');
+		// Select the submit button
+		const submitBtn = document.getElementById('submitBtn');
 
+		// Function to compare passwords and enable/disable submit button
+		function checkPasswords() {
+			const password = passwordInput.value;
+			const repassword = repasswordInput.value;
+
+			if (password === repassword) {
+				submitBtn.disabled = false;
+				submitBtn.classList.remove('btn-danger');
+				submitBtn.classList.remove('btn');
+
+			} else {
+				submitBtn.disabled = true;
+				submitBtn.classList.add('btn');
+				submitBtn.classList.add('btn-danger');
+			}
+		}
+
+		// Add event listeners to the input fields
+		// Function to display the selected image
+		function displayImage() {
+			const file = fileInput.files[0];
+			if (file) {
+				imagePreview.style.display = 'block';
+				const reader = new FileReader();
+				reader.onload = function (event) {
+					imagePreview.src = event.target.result;
+				};
+				reader.readAsDataURL(file);
+			} else {
+				imagePreview.src = ''; // Clear the image preview
+			}
+		}
+
+		// Add event listeners to the input fields
+		passwordInput.addEventListener('input', checkPasswords);
+		repasswordInput.addEventListener('input', checkPasswords);
+		fileInput.addEventListener('change', displayImage);
+	</script>
 </body>
 
 </html>

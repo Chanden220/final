@@ -114,39 +114,31 @@
 
     </div>
     <div class="profileuser">
+        {% if user.is_authenticated %}
+        <div class="User" id="User" style="margin-top: 11%;">
+            <div class="ButtonLS" style="height: 268px;">
+                <img class="" src="../media/{{ userdata.first.avatar }}" alt="">
+                <h5>
+                    {{ user.username }}
+                </h5>
+                <p>{{ user.email }}</p>
+                <hr>
+                <p>Purchase History</p>
+                <a href="{% url 'onedaytwogether:Logout' %}"><button>Logout</button></a>
+            </div>
+        </div>
+        {% else %}
         <div class="User" id="User">
             <div class="ButtonLS">
                 <a href="{% url 'onedaytwogether:Login' %}"><button>Login</button></a>
                 <a href="{% url 'onedaytwogether:Signup' %}"><button>Sign up</button></a>
             </div>
-
         </div>
+        {% endif %}
 
 
-        <div class="User" id="User">
-            <img class="" src="" alt="">
-            <h5></h5>
-            <p></p>
-            <hr>
-            <p>Purchase History</p>
-            <div style="text-align:center;">
-                <table>
-                    <tr>
-                        <th>Product</th>
-                        <th>Amount</th>
-                        <th>Price</th>
-                    </tr>
 
-                    <tr>
-                        <td style="font-size: 13px;"></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
 
-                </table>
-            </div>
-            <hr>
-        </div>
         <script>
             function toggle() {
                 let bar = document.getElementById("menu-link-ul");

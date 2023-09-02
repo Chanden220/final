@@ -68,6 +68,10 @@
 }
 #Search-button{
     background-color: #007180;
+
+    margin-top: 8%;
+    border-radius: 9px;
+    width: 124%;
 }
 .menu-search input[type=text],input[type=button]
 {
@@ -111,16 +115,18 @@
     padding: 25px 15px 0px 15px;
 }
 .the-destination .knongpsar img{
-    width: 50vw;
+    width: 100%;
 }
 .the-destination .knongpsar .knongpsar-info{
-    width: 50vw;
+
     padding-left: 15px ;
 }
 .the-destination .knongpsar .knongpsar-info input{
     border: 1px solid #208390;
     background-color: white;
     color: #208390;
+    margin-left: 0%;
+    position: absolute;
 }
 
 
