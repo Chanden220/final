@@ -31,6 +31,9 @@ def User_Profile_directory_path(request, filename):
 def Destination_directory_path(request, filename):
  # return "files/users/%s/%s" % (request.user.id, filename)
     return '/'.join(['content', request.destination, filename])
+def Product_directory_path(request, filename):
+ # return "files/users/%s/%s" % (request.user.id, filename)
+    return '/'.join(['content', request.Product_name, filename])
 
 class User_Profile(models.Model):
     Users = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -38,12 +41,12 @@ class User_Profile(models.Model):
     last_name = models.CharField(max_length=30)
     avatar = models.FileField(blank=True, upload_to=User_Profile_directory_path,  validators=[validate_file_extension])
     sex = models.CharField(max_length=7, choices=Sex)
-    dob = models.DateField()
+    dob = models.DateField(default='2023-09-03')
     email = models.EmailField(max_length=150)
     tel = models.CharField(max_length=30)
     Address = models.CharField(max_length=30)
     detail = RichTextField(blank=True, null=True)
-    status = models.BooleanField()
+    status = models.BooleanField(default=True)
     def __str__(self):
         return str(self.id)+ '  ' + str(self.Users)
     class Meta():
@@ -79,12 +82,35 @@ class Schedule(models.Model):
         ordering = ['id']    
 
 
-#class Tour(models.Model):
-#    User_Profile = models.ForeignKey(User_Profile, on_delete=models.CASCADE)
-#    Tour_Team = models.ForeignKey(Tour_Team, on_delete=models.CASCADE)
-#    Destination_ID = models.ForeignKey(Destination, on_delete=models.CASCADE)
-#    Schedule_ID = models.ForeignKey(Schedule, on_delete=models.CASCADE)
-#    def str(self):
-#        return str(self.id) + '  ' + str(self.Users_Profiles_ID) + '  '+str(self.Tour_Teams_ID) + '  ' + str(self.Destination_ID) + '  '+str(self.Schedule_ID) 
-#    class Meta():
-#        ordering = ['id']
+class Tour(models.Model):
+    User_Profile_ID = models.ForeignKey(User_Profile, on_delete=models.CASCADE)
+    Tour_Team_ID = models.ForeignKey(Tour_Team, on_delete=models.CASCADE)
+    Destination_ID = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    Schedule_ID = models.ForeignKey(Schedule, on_delete=models.CASCADE)
+    def str(self):
+        return str(self.id) + '  ' + str(self.User_Profile_ID) + '  '+str(self.Tour_Team_ID) + '  ' + str(self.Destination_ID) + '  '+str(self.Schedule_ID) 
+    class Meta():
+        ordering = ['id']
+class Shop(models.Model):
+    Product_name = models.CharField(max_length=30)
+    Image = models.FileField(blank=True, upload_to=Product_directory_path,  validators=[validate_file_extension])
+    Quantity = models.IntegerField()
+    Original_Price = models.DecimalField(max_digits=10, decimal_places=2)
+    New_Price = models.DecimalField(max_digits=10, decimal_places=2)
+    Product_Type = models.CharField(max_length=30)
+    detail = RichTextField(blank=True, null=True)
+    def str(self):
+        return str(self.Product_name)
+    class Meta():
+        ordering = ['id']
+class Purchase_History(models.Model):
+    User = models.ForeignKey(User, on_delete=models.CASCADE)
+    Product_name = models.ForeignKey(Shop, on_delete=models.CASCADE)
+    Amount = models.IntegerField()
+    Cost = models.DecimalField(max_digits=10, decimal_places=2)
+    Date = models.DateField()
+    detail = RichTextField(blank=True, null=True)
+    def str(self):
+        return str(self.User)+ ' ' +str(self.Product_name)
+    class Meta():
+        ordering = ['id']

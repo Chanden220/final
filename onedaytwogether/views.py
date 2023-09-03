@@ -10,6 +10,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib.auth.models import User
+import datetime
 class HomeView(View):
     template_name = 'index.html'
     
@@ -74,31 +75,53 @@ class SignupView(View):
     
     def get(self, request):
         return render(request, self.template_name)
-    def post(self, request, **args): 
+    
+    def post(self, request, **kwargs):
+        username = request.POST.get('user_name')
+        password = request.POST.get('password')
+        email = request.POST.get('email')
+        
+        # Create user and save
+        user = User.objects.create_user(username=username, password=password,email=email)
+        
+        # Log in the user
+        user = authenticate(request, username=username, password=password)
+        login(request, user)
+        
+        return redirect('onedaytwogether:index')
+
+
+class CompleteProfile(View):
+    template_name = 'CompleteProfiles.html'
+    
+    def get(self, request):
+        return render(request, self.template_name)
+    
+    def post(self, request, **kwargs):
+        user = request.user
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
-        avatar = request.FILES.get('avatar')
+        avatar = request.FILES.get('file')
         sex = request.POST.get('sex')
-        dob = request.POST.get('dob')
-        email = request.POST.get('email')
-        tel = request.POST.get('tel')
+        dob = request.POST.get('birthdate')
+        tel = request.POST.get('phone')
         detail = request.POST.get('detail')
         address = request.POST.get('address')
         
-        student = User_Profile(
-            first_name=first_name,
-            last_name=last_name,
-            avatar=avatar,
-            sex=sex,
-            dob=dob,
-            email=email,
-            tel=tel,
-            detail=detail,
-            status=status == 'on',  # Convert 'on' to True, otherwise False
-        )
-        student.save()
-        return redirect('userprofile:studentlist')
-    
+        user_profile, created = User_Profile.objects.get_or_create(Users=user)
+        user_profile.first_name = first_name
+        user_profile.last_name = last_name
+        user_profile.avatar = avatar
+        user_profile.sex = sex
+        user_profile.dob = dob
+        user_profile.email = request.user.email
+        user_profile.tel = tel
+        user_profile.detail = detail
+        user_profile.Address = address
+        user_profile.status = True  # Assuming status is a BooleanField
+        user_profile.save()
+
+        return redirect('onedaytwogether:index')
 class LogoutView(View):
     def get(self, request): 
         logout(request)

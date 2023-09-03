@@ -37,10 +37,24 @@ class ScheduleAdmin(admin.ModelAdmin):
     search_fields = ['id', 'Destination', 'Schedule']
 admin.site.register(Schedule, ScheduleAdmin)
 
-#class TourAdmin(admin.ModelAdmin):
-#    list_display = ['id','User_Profile', 'Tour_Team', 'Destination_ID', 'Schedule_ID']
-#    list_display_links = ['id', 'User_Profile', 'Tour_Team']
-#    list_per_page = 5
-#    search_fields = ['id', 'User_Profile', 'Tour_Team', 'Destination_ID']
-#    autocomplete_fields = ['User_Profile, Tour_Team', 'Destination_ID', 'Schedule_ID']
-#admin.site.register(Tour, TourAdmin)
+class TourAdmin(admin.ModelAdmin):
+    list_display = ['id','User_Profile_ID', 'Tour_Team_ID', 'Destination_ID', 'Schedule_ID']
+    list_display_links = ['id', 'User_Profile_ID', 'Tour_Team_ID']
+    list_per_page = 5
+    search_fields = ['id', 'User_Profile_ID', 'Tour_Team_ID', 'Destination_ID']
+#    autocomplete_fields = ['User_Profile_ID, Tour_Team_ID', 'Destination_ID', 'Schedule_ID']
+admin.site.register(Tour, TourAdmin)
+class ShopAdmin(admin.ModelAdmin):
+    def image_tag(self, obj):
+        return format_html('<img src="{}" width="50px" />'.format(obj.Image.url))
+    list_display = ['id', 'image_tag', 'Product_name', 'Quantity', 'Original_Price', 'New_Price', 'Product_Type']
+    list_display_links = ['id', 'image_tag', 'Product_name']
+    list_per_page = 5
+    search_fields = ['id', 'Product_name']
+admin.site.register(Shop, ShopAdmin)
+class Purchase_HistoryAdmin(admin.ModelAdmin):
+    list_display = ['id', 'User', 'Product_name', 'Amount', 'Cost', 'Date']
+    list_display_links = ['id', 'User', 'Product_name']
+    list_per_page = 5
+    search_fields = ['id', 'User', 'Product_name']
+admin.site.register(Purchase_History, Purchase_HistoryAdmin)
