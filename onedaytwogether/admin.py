@@ -46,7 +46,7 @@ class TourAdmin(admin.ModelAdmin):
 admin.site.register(Tour, TourAdmin)
 class ShopAdmin(admin.ModelAdmin):
     def image_tag(self, obj):
-        return format_html('<img src="{}" width="50px" />'.format(obj.Image.url))
+        return format_html('<img src="../../../onedaytwogether/media/{}" width="50px" />'.format(obj.Image))
     list_display = ['id', 'image_tag', 'Product_name', 'Quantity', 'Original_Price', 'New_Price', 'Product_Type']
     list_display_links = ['id', 'image_tag', 'Product_name']
     list_per_page = 5
@@ -58,3 +58,9 @@ class Purchase_HistoryAdmin(admin.ModelAdmin):
     list_per_page = 5
     search_fields = ['id', 'User', 'Product_name']
 admin.site.register(Purchase_History, Purchase_HistoryAdmin)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['id', 'Name', 'Email', 'Destination', 'Schedule','Details']
+    list_display_links = ['id', 'Name', 'Email']
+    list_per_page = 5
+    search_fields = ['id', 'Name', 'Destination', 'Schedule']
+admin.site.register(Contact, ContactAdmin)

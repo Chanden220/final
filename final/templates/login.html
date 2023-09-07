@@ -11,6 +11,16 @@
 	<link rel="stylesheet" href="{% static 'css/login&signup.css' %}">
 	<link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
 </head>
+<style>
+	.inputna {
+		font-size: medium;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		width: 80%;
+		margin-top: 2%;
+	}
+</style>
 
 <body>
 	<div align=center>
@@ -27,11 +37,19 @@
 		<form method="post" action="{% url 'onedaytwogether:Login' %}">
 			{% csrf_token %}
 			<div class="profile"><br>Login</div>
+			{% if messages %}
+
+			{% for message in messages %}
+			<p {% if message.tags %} class="{{ message.tags }}" {% endif %} style="
+										 margin-left: 10%;
+						    color: red;width: 80%;">{{ message }}</p>
+			{% endfor %}
+
+
+			{% endif %}
 			<div class="input">
-				<input id="text" type="text" name="email" placeholder="Email"
-					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
-				<input id="text" type="password" name="password" placeholder="Password"
-					style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+				<input id="text" type="text" name="email" placeholder="Email or Username" class="inputna" /><br><br>
+				<input id="text" type="password" name="password" placeholder="Password" class="inputna" /><br><br>
 
 				<input id="button" type="submit" value="NEXT"
 					style="margin-top:2%;font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px"><br><br>
@@ -60,9 +78,11 @@
 				YOUR ACCOUNT HERE</a>
 
 		</form>
-
+		<br>
+		<br>
+		<br>
 	</div>
-
+	<br>
 </body>
 
 </html>

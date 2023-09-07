@@ -15,23 +15,6 @@
 .menu-logo img{
     width: 120px;
 }
-.menu-link{
-
-}
-.menu-link ul{
-    list-style: none;
-    display: flex;
-}
-.menu-link ul li{
-    padding: 28px 25px;
-}
-.menu-link ul li:hover a{
-    /* background-color: darkgrey; */
-}
-.menu-link ul li a{
-    color: black;
-    text-decoration: none;
-}
 .menu-icon{
     padding-top: 32px;
     display: flex;
@@ -49,7 +32,8 @@
 
 .header
 {
-    width: 100%;  
+        width: 100%;
+    margin-top: 4%;
 }
 .header h3{
     color: #027081;
@@ -129,46 +113,31 @@
     position: absolute;
 }
 
-
-
+.menu-search input[type=text], input[type=button],input[type=date] {
+    padding: 4px 12px;
+    padding-left: 25px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid darkgrey;
+    margin: 0px 8px;
+}
 @media (max-width: 738px)
 {
-#menu-link-ul{
-    display: none;
-}
- .menu-link ul{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(150, 147, 147, 0.5);
-    height: 320px;
-    width: 220px;
-    overflow: hidden;
-    border-radius: 8px;
-    justify-content: center;
-    padding: 0px 12px;
-    
- }
- .menu-link ul li{
-  padding: 10px 11px;
-    width: 100%;
-}
-.menu-link ul li:hover{
-
-    background: rgb(104, 99, 99);
-    border-radius: 8px;
-}
-.menu-link ul li a{
-    color: white;
-}
  #bar{
     display: block;
 }
+.text-body {
+    background-color: #007180;
+    padding: 25px 15px 0px 15px;
+    margin: 24px 12px 20px 12px;
+}
 .menu-search input[type=text],input[type=button]{
     margin-bottom: 12px;
+}
+.header
+{
+        width: 100%;
+    margin-top: 12%;
 }
 }
 @media (min-width: 810px) and (max-width: 1080px) { 

@@ -23,6 +23,13 @@
 		margin-top: 2%;
 	}
 
+
+	.btntext {
+		font-size: large;
+		margin-left: 31%;
+		margin-top: 1%;
+	}
+
 	.imagePreview {
 		display: none;
 		width: 100px;
@@ -50,6 +57,17 @@
 			margin-left: 59%;
 			color: rgb(232, 133, 133);
 		}
+
+		.btntext {
+			font-size: large;
+			margin-left: 20%;
+			margin-top: 1%;
+		}
+	}
+
+	.PSER {
+		color: red;
+		display: none;
 	}
 </style>
 
@@ -69,6 +87,16 @@
 			enctype="multipart/form-data">
 			{% csrf_token %}
 			<div class="profile"><br>Signup</div>
+			{% if messages %}
+
+			{% for message in messages %}
+			<p {% if message.tags %} class="{{ message.tags }}" {% endif %} style="
+													 margin-left: 10%;
+									    color: red;width: 80%;">{{ message }}</p>
+			{% endfor %}
+
+
+			{% endif %}
 			<div class="form-group">
 				<input id="user_name" type="text" name="user_name" placeholder="Username" class="inputna"><br><br>
 				<input id="email" type="text" name="email" placeholder="Email" class="inputna"><br><br>
@@ -99,6 +127,7 @@
 					aria-valuemin="0" aria-valuemax="100"></div>
 			</div>
 			<input class="inputna" type="password" placeholder="Confirm Password" />
+			<p class="PSER">Password not the same</p>
 			<button class="password-strength__submit btn btn-success d-flex m-auto" type="submit" disabled="disabled"
 				style="    margin-top: 6% !important;
     
@@ -109,13 +138,16 @@
     height: 50px;
     border-radius: 10px;
     text-align: center;">
-				<p style="  font-size: large;  margin-left: 31%;
-    margin-top: 1%;">Create
+				<p class="btntext">Create
 					Account</p>
 			</button>
 			<a style="margin-bottom: 10%;" href="{% url 'onedaytwogether:Login' %}">Already have account?</a>
 		</form>
+		<br>
+		<br>
+		<br>
 	</div>
+	<br>
 	</div>
 	<!-- partial -->
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
@@ -160,7 +192,12 @@
 			// Get the password values
 			var password = passwordInput.value;
 			var confirmPassword = confirmPasswordInput.value;
-
+			if (password === confirmPassword) {
+				$(".PSER").hide();
+			}
+			else {
+				$(".PSER").show();
+			}
 			// Check if the passwords match
 			var passwordsMatch = password === confirmPassword;
 

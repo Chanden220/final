@@ -9,7 +9,7 @@
     border-radius: 50px;
 }
 .Submitbtn{
-   font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px;
+   font-size:large;border:none;background: #0982FE;width:89%;color:white;height: 50px;border-radius: 10px;
 }
 .Greenblock{
     width: 99%;
@@ -92,23 +92,35 @@ margin-top: -15%;
     padding-left: 0px;
     margin-left: 0px;
   }
-@media only screen and (max-width:768px){
-    /*for mobile phone*/
-.contact{
-    Margin-top: -11%;
-    Margin-left: 5%;
-    box-sizing: border-box;
-    text-align: center;
-    width: 100%;
-    height: auto;
-    background: #FFFFFF;
+
+.header
+{
+        width: 100%;
+    margin-top: 4%;
+}
+.contactform{
     border-radius: 50px;
 }
+@media only screen and (max-width:768px){
+    /*for mobile phone*/
+    .body{
+        width:80%;
+    }
+.contact{
+    Margin-top: -2%;
+    Margin-left: 6%;
+    box-sizing: border-box;
+    text-align: center;
+    width:88%;
+    height: auto;
+    background: #FFFFFF;
+    
+}
 .Submitbtn{
-   font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px;
+   font-size:large;border:none;background: #0982FE;width:89%;color:white;height: 50px;border-radius: 10px;
 }
 .Greenblock{
-    width: 99%;
+    width: 100%;
     height: 22px;
     background: #124747;
 }
@@ -188,4 +200,16 @@ margin-top: -15%;
     padding-left: 0px;
     margin-left: 0px;
   }
+
+.header
+{
+    width: 100%;
+    margin-top: 12%;
+}
+.menu {
+    width: 105%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
 }

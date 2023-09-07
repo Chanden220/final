@@ -17,6 +17,16 @@ Sex = (
     ('Male', 'Male'),
     ('Femail', 'Female')
 ) 
+Product_Type = (
+    ('Equipment', 'Equipment'),
+    ('Tents', 'Tents'),
+    ('Equipment', 'Equipment'),
+    ('Bags', 'Bags'),
+    ('Clothes', 'Clothes'),
+    ('Shoes', 'Shoes'),
+    ('Accessory', 'Accessory'),
+    ('Shelters', 'Shelters')
+) 
 
 def validate_file_extension(value): 
     ext = os.path.splitext(value.name)[1]  # [0] returns path+filename
@@ -77,7 +87,7 @@ class Schedule(models.Model):
     Destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
     Schedule = models.DateField()
     def __str__(self):
-        return str(self.Destination)
+        return str(self.Schedule)+ ' ' +str(self.Destination)
     class Meta():
         ordering = ['id']    
 
@@ -87,7 +97,7 @@ class Tour(models.Model):
     Tour_Team_ID = models.ForeignKey(Tour_Team, on_delete=models.CASCADE)
     Destination_ID = models.ForeignKey(Destination, on_delete=models.CASCADE)
     Schedule_ID = models.ForeignKey(Schedule, on_delete=models.CASCADE)
-    def str(self):
+    def __str__(self):
         return str(self.id) + '  ' + str(self.User_Profile_ID) + '  '+str(self.Tour_Team_ID) + '  ' + str(self.Destination_ID) + '  '+str(self.Schedule_ID) 
     class Meta():
         ordering = ['id']
@@ -97,9 +107,9 @@ class Shop(models.Model):
     Quantity = models.IntegerField()
     Original_Price = models.DecimalField(max_digits=10, decimal_places=2)
     New_Price = models.DecimalField(max_digits=10, decimal_places=2)
-    Product_Type = models.CharField(max_length=30)
+    Product_Type = models.CharField(max_length=30,choices=Product_Type)
     detail = RichTextField(blank=True, null=True)
-    def str(self):
+    def __str__(self):
         return str(self.Product_name)
     class Meta():
         ordering = ['id']
@@ -110,7 +120,19 @@ class Purchase_History(models.Model):
     Cost = models.DecimalField(max_digits=10, decimal_places=2)
     Date = models.DateField()
     detail = RichTextField(blank=True, null=True)
-    def str(self):
+    def __str__(self):
         return str(self.User)+ ' ' +str(self.Product_name)
+    class Meta():
+        ordering = ['id']
+class Contact(models.Model):
+    Name = models.CharField(max_length=30)
+    Address = models.CharField(max_length=30)
+    Phone_Number = models.CharField(max_length=30)
+    Email = models.EmailField(max_length=100)
+    Destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    Schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
+    Details = models.CharField(max_length=200)
+    def __str__(self):
+        return str(self.Name)+ ' ' +str(self.Destination)+ ' ' +str(self.Schedule)
     class Meta():
         ordering = ['id']

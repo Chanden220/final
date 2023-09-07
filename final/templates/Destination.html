@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
     <link rel="stylesheet" href="{% static 'css/Destination.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
@@ -31,13 +32,15 @@
                         <input type="text" placeholder="Search Destinations" name="search" id="">
                     </div>
                     <div>
+                        <input type="date" id="" name="searchdate">
+                    </div>
+                    <div>
                         <input style="color: white;" type="submit" value="Search" name="" id="Search-button">
                     </div>
                 </div>
             </form>
         </center>
     </div>
-
 
     <div class="text-body">
         <h3>Camping Trip: </h3>
@@ -60,7 +63,7 @@
     </div>
 
     <div class="the-destination" style="width:100%">
-        {% for i in data %}
+        {% for i in desdata %}
         <div class="knongpsar">
             <div class="row">
                 <a href="FirstDestination.html" class="col-md-6"><img src="../media/{{ i.Image }}" alt=""></a>
@@ -74,18 +77,31 @@
                     <p>
                         {% autoescape off %}{{ i.description }}{% endautoescape %}
                     </p>
+                    <form action="{% url 'onedaytwogether:contact' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="desid" value="{{ i.id }}">
+                        <p>Available Schedule:
 
-                    <a href="{% url 'onedaytwogether:contact' %}" style="display: absolute;bottom: 0;"><input
-                            type="button" value="Booking  " name="" id=""></a>
+                            <select name="schedule">
+                                {% for j in shcedata %}
+                                {% if i.id == j.Destination_id %}
+
+                                <option value="{{ j.id }}">
+                                    {{ j.Schedule }}
+                                </option>
+                                {% else %}
+
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </p>
+                        <input type="submit" class="btn btn-primary" value="Booking">
+                    </form>
 
                 </div>
             </div>
         </div>
-
-
-
         <br>
-
         {% endfor %}
     </div>
 
