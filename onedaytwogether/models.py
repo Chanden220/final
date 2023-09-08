@@ -136,3 +136,18 @@ class Contact(models.Model):
         return str(self.Name)+ ' ' +str(self.Destination)+ ' ' +str(self.Schedule)
     class Meta():
         ordering = ['id']
+Sized = (
+    ('L', 'Large'),
+    ('M', 'Medium'),
+    ('S', 'Small')
+)
+class Cart(models.Model):
+    Username = models.ForeignKey(User, on_delete=models.CASCADE)
+    Product_name = models.ForeignKey(Shop, on_delete=models.CASCADE)
+    Sized = models.CharField(max_length=7, choices=Sized)
+    Quantity = models.IntegerField() 
+    Price = models.DecimalField(max_digits=10, decimal_places=2)
+    def str(self):
+        return str(self.Username)+ ' ' +str(self.Product_name)
+    class Meta():
+        ordering = ['id']

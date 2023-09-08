@@ -73,7 +73,9 @@
             </div>
             <div class="col-lg-6">
                 <div class="right-details">
-                    <form method="post">
+                    <form method="post" action="{% url 'onedaytwogether:cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ productdata.id }}" name="product_id">
                         <h2 align="center" style="padding: 15px; font-family: Inter;">
                             {{ productdata.Product_name }}
                         </h2>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.views.generic import View, TemplateView 
 from django.views import generic
 from django.core.paginator import Paginator
@@ -74,14 +74,44 @@ class ShopCategoryView(View):
         current_user = request.user.id
         userdata = User_Profile.objects.filter(Users=current_user)
         return render(request, self.template_name,{'userdata': userdata,'productdata':products})
+from decimal import Decimal
+
 class CartView(View):
     template_name = 'cart.html'
     
     def get(self, request):
-       
         current_user = request.user.id
+        cartdata=Cart.objects.filter(Username=current_user)
         userdata = User_Profile.objects.filter(Users=current_user)
-        return render(request, self.template_name,{'userdata': userdata})
+        total_price = Decimal(0)
+        for cart in cartdata:
+            total_price += cart.Price
+        return render(request, self.template_name, {'userdata': userdata, 'cartdata':cartdata,'total_price': total_price})
+    
+    def post(self, request, **kwargs):
+        productid = request.POST.get('product_id')
+        quantity = int(request.POST.get('Quantity'))
+        productdetail = Shop.objects.get(id=productid)
+        user = User.objects.get(id=request.user.id)
+        size = request.POST.get('size')
+        price = productdetail.New_Price * Decimal(quantity)  # Convert quantity to Decimal
+        cart = Cart(
+            Username=user,
+            Product_name=productdetail,
+            Sized=size,
+            Quantity=quantity,
+            Price=price
+        )
+        cart.save()
+        return redirect('onedaytwogether:cart')
+class CartDeleteView(View):
+    template_name = 'cart.html'
+    
+    def get(self, request,id):      
+        current_user = request.user.id
+        Carts = get_object_or_404(Cart, id=id,Username=current_user)
+        Carts.delete()
+        return redirect('onedaytwogether:cart')
 class ShopDetailView(View):
     template_name = 'product-detail.html'
     
