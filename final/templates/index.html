@@ -262,7 +262,8 @@
                         <div class="d-flex flex-column">
                             <p>We offer you a place and a wide range of camping supplies to make your selection
                                 enjoyable and create a perfect connection between you and nature</p>
-                            <button class="btn btn-primary">Explore more</button>
+                            <a href="{% url 'onedaytwogether:Destination' %}"><button class="btn btn-primary">Explore
+                                    more</button></a>
                         </div>
                     </div>
                     <p class="text-center mt-2">Image 1</p>
@@ -275,7 +276,8 @@
                         <div class="d-flex flex-column">
                             <p>We offer you a place and a wide range of camping supplies to make your selection
                                 enjoyable and create a perfect connection between you and nature</p>
-                            <button class="btn btn-primary">Explore more</button>
+                            <a href="{% url 'onedaytwogether:Destination' %}"><button class="btn btn-primary">Explore
+                                    more</button></a>
                         </div>
                     </div>
                     <p class="text-center mt-2">Image 2</p>
@@ -292,7 +294,8 @@
                         <div class="d-flex flex-column">
                             <p>We offer you a place and a wide range of camping supplies to make your selection
                                 enjoyable and create a perfect connection between you and nature</p>
-                            <button class="btn btn-primary">Explore more</button>
+                            <a href="{% url 'onedaytwogether:Destination' %}"><button class="btn btn-primary">Explore
+                                    more</button></a>
                         </div>
                     </div>
                     <p class="text-center mt-2">Image 3</p>
@@ -302,11 +305,21 @@
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="shop">
-        <h3>Shop for your supplies!</h3>
-        <br><br>
-        <h6>We offer a wise variety of camping packages
-            for you to choose from, depending on your dream destination! </h6><br><br><br>
-        <button>Go to Shop</button>
+        <div class="row">
+            <div class="col-md-6" style="
+    padding: 5%;
+">
+                <h3>Shop for your supplies!</h3>
+                <br><br>
+                <h6>We offer a wise variety of camping packages
+                    for you to choose from, depending on your dream destination! </h6>
+            </div>
+            <div class="col-md-6">
+                <a href="{% url 'onedaytwogether:shop' %}"> <button>Go to Shop</button></a>
+            </div>
+        </div>
+
+
     </div>
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
