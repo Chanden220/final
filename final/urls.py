@@ -21,6 +21,7 @@ from onedaytwogether import views as onedaytwogether
 from onedaytwogether.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    
+    path('admin/', admin.site.urls), 
     path('onedaytwogether/', include('onedaytwogether.urls')),
 ]

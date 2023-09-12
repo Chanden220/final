@@ -6,19 +6,23 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout, login
 from django.db.models import Q
+from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib.auth.models import User
 import datetime
 from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 class HomeView(View):
     template_name = 'index.html'
     
     def get(self, request):
         current_user = request.user.id
         userdata = User_Profile.objects.filter(Users=current_user)
-        return render(request, self.template_name, {'userdata': userdata})
+        purchasehis=Purchase_History.objects.filter(User=current_user)
+        return render(request, self.template_name, {'userdata': userdata,'purchase_history':purchasehis})
 class DestinationView(View):
     template_name = 'Destination.html'
 
@@ -29,6 +33,7 @@ class DestinationView(View):
         searchdate_query = request.GET.get('searchdate')
         desdata = Destination.objects.all()
         shcedata = Schedule.objects.all().order_by('Schedule')
+        purchasehis=Purchase_History.objects.filter(User=current_user)
         
         if search_query:
             desdata = desdata.filter(
@@ -45,18 +50,23 @@ class DestinationView(View):
                 Q(schedule__in=schesearch.values('pk')) 
             )
         
-        return render(request, self.template_name, {'desdata': desdata, 'shcedata': shcedata, 'userdata': userdata})
+        return render(request, self.template_name, {'desdata': desdata, 'shcedata': shcedata, 'userdata': userdata,'purchase_history':purchasehis})
 class ShopView(View):
     template_name = 'shop.html'
     
     def get(self, request):
-        products = Shop.objects.filter(Quantity__gt=0)
+        allproducts = Shop.objects.all()
         current_user = request.user.id
         userdata = User_Profile.objects.filter(Users=current_user)
-        return render(request, self.template_name,{'userdata': userdata,'productdata':products})
+        page_num = 20
+        paginator = Paginator(allproducts, page_num)
+        page = request.GET.get('page')
+        products = paginator.get_page(page)
+        purchasehis=Purchase_History.objects.filter(User=current_user)
+        return render(request, self.template_name, {'userdata': userdata,'productdata':products,'purchase_history':purchasehis})
     def post(self, request, **kwargs):
         search_query = request.POST.get('search')
-        product=Shop.objects.filter(Quantity__gt=0)
+        product=Shop.objects.all()
         if search_query:
             product = product.filter(
                 Q(Product_name__icontains=search_query) |
@@ -64,45 +74,101 @@ class ShopView(View):
                 Q(detail__icontains=search_query)
             )
         current_user = request.user.id
+        page_num = 20
         userdata = User_Profile.objects.filter(Users=current_user)
-        return render(request, self.template_name,{'userdata': userdata,'productdata':product})
+        paginator = Paginator(product, page_num)
+        page = request.GET.get('page')
+        products = paginator.get_page(page)
+        purchasehis=Purchase_History.objects.filter(User=current_user)
+        return render(request, self.template_name, {'userdata': userdata,'productdata':products,'purchase_history':purchasehis})
 class ShopCategoryView(View):
     template_name = 'shop.html'
     
     def get(self, request,category):
-        products = Shop.objects.filter(Product_Type=category, Quantity__gt=0)
+        allproducts = Shop.objects.filter(Product_Type=category, Quantity__gt=0)
         current_user = request.user.id
         userdata = User_Profile.objects.filter(Users=current_user)
-        return render(request, self.template_name,{'userdata': userdata,'productdata':products})
+        page_num = 20
+        paginator = Paginator(allproducts, page_num)
+        page = request.GET.get('page')
+        products = paginator.get_page(page)
+        purchasehis=Purchase_History.objects.filter(User=current_user)
+        return render(request, self.template_name, {'userdata': userdata,'productdata':products,'purchase_history':purchasehis})
 from decimal import Decimal
+from django.shortcuts import redirect
+from django.views import View
+from django.utils import timezone
+from decimal import Decimal
+from .models import User, Cart, Purchase_History
 
+class PurchaseView(View):
+    def get(self, request):
+        return redirect('onedaytwogether:cart')
+    
+    def post(self, request, **kwargs):
+        current_user = request.user.id
+        userdata = User.objects.get(id=current_user)
+        allitemsincart = Cart.objects.filter(Username=current_user)
+
+        for item in allitemsincart:
+            price = Decimal(item.Product_name.New_Price) * Decimal(item.Quantity)
+            PurchaseHistory = Purchase_History(
+                User=userdata,
+                Product_name=item.Product_name,
+                Amount=item.Quantity,
+                Cost=price,
+                Date=timezone.now()
+            )
+            PurchaseHistory.save()
+                # Check if the product exists in the cart
+        for item in allitemsincart:
+            AllProduct = Shop.objects.filter(id=item.Product_name.id)
+            if AllProduct.exists():
+                AllProduct = AllProduct.first()
+                AllProduct.Quantity -= item.Quantity
+                AllProduct.save()
+        allitemsincart.delete()
+        return redirect('onedaytwogether:cart')
 class CartView(View):
     template_name = 'cart.html'
     
     def get(self, request):
         current_user = request.user.id
-        cartdata=Cart.objects.filter(Username=current_user)
+        cartdata = Cart.objects.filter(Username=current_user)
+        allproduct=Shop.objects.all()
         userdata = User_Profile.objects.filter(Users=current_user)
         total_price = Decimal(0)
         for cart in cartdata:
             total_price += cart.Price
-        return render(request, self.template_name, {'userdata': userdata, 'cartdata':cartdata,'total_price': total_price})
+        if not cartdata:
+            return redirect('onedaytwogether:shop')  # Redirect to the shop
+        purchasehis=Purchase_History.objects.filter(User=current_user)
+        return render(request, self.template_name, {'allproduct':allproduct,'userdata': userdata, 'cartdata': cartdata, 'total_price': total_price,'purchase_history':purchasehis})
     
     def post(self, request, **kwargs):
-        productid = request.POST.get('product_id')
+        product_id = request.POST.get('product_id')
         quantity = int(request.POST.get('Quantity'))
-        productdetail = Shop.objects.get(id=productid)
+        product_detail = Shop.objects.get(id=product_id)
         user = User.objects.get(id=request.user.id)
-        size = request.POST.get('size')
-        price = productdetail.New_Price * Decimal(quantity)  # Convert quantity to Decimal
-        cart = Cart(
-            Username=user,
-            Product_name=productdetail,
-            Sized=size,
-            Quantity=quantity,
-            Price=price
-        )
-        cart.save()
+
+        price = product_detail.New_Price * Decimal(quantity)  # Convert quantity to Decimal
+        
+        # Check if the product exists in the cart
+        existing_cart = Cart.objects.filter(Username=user, Product_name=product_detail)
+        if existing_cart.exists():
+            existing_item = existing_cart.first()
+            existing_item.Quantity += quantity
+            existing_item.Price += price
+            existing_item.save()
+        else:
+            cart = Cart(
+                Username=user,
+                Product_name=product_detail,
+                Quantity=quantity,
+                Price=price
+            )
+            cart.save()
+        
         return redirect('onedaytwogether:cart')
 class CartDeleteView(View):
     template_name = 'cart.html'
@@ -112,14 +178,20 @@ class CartDeleteView(View):
         Carts = get_object_or_404(Cart, id=id,Username=current_user)
         Carts.delete()
         return redirect('onedaytwogether:cart')
+
+
 class ShopDetailView(View):
     template_name = 'product-detail.html'
     
-    def get(self, request,id):
-        product=Shop.objects.get(id=id)
+    def get(self, request, id):
+        try:
+            product = Shop.objects.get(id=id)
+        except Shop.DoesNotExist:
+            return redirect('onedaytwogether:shop')  # Redirect to the shop
+        purchasehis=Purchase_History.objects.filter(User=current_user)
         current_user = request.user.id
         userdata = User_Profile.objects.filter(Users=current_user)
-        return render(request, self.template_name,{'userdata': userdata,'productdata':product})
+        return render(request, self.template_name, {'userdata': userdata, 'productdata': product,'purchase_history':purchasehis})
 class ContactView(View):
     template_name = 'contact.html'
     
@@ -129,7 +201,8 @@ class ContactView(View):
         userdata = User_Profile.objects.filter(Users=current_user)
         desdata = Destination.objects.all()
         shcedata=Schedule.objects.all().order_by('Schedule')
-        return render(request, self.template_name,{'desid':selectdesdata,'shcedata':shcedata,'desdata':desdata,'userdata': userdata})
+        purchasehis=Purchase_History.objects.filter(User=current_user)
+        return render(request, self.template_name,{'desid':selectdesdata,'shcedata':shcedata,'desdata':desdata,'userdata': userdata,'purchase_history':purchasehis})
     def post(self, request, **kwargs):
         schedule = request.POST.get('schedule')
         desid = request.POST.get('desid')
@@ -147,29 +220,31 @@ class ContactView(View):
         location_id = request.POST.get('Location')
         schedule_id = request.POST.get('Scheduleid')
         detail = request.POST.get('lettalk')
+        if location_id:
+            
+            location = Destination.objects.get(id=location_id)
+            schedule = Schedule.objects.get(id=schedule_id)
 
-        location = Destination.objects.get(id=location_id)
-        schedule = Schedule.objects.get(id=schedule_id)
-
-        contact = Contact(
-            Name=Name,
-            Address=address,
-            Phone_Number=Contactnum,
-            Email=email,
-            Destination=location,
-            Schedule=schedule,
-            Details=detail,
-        )
-        contact.save()
-        
-        return render(request, self.template_name,{'desid':selectdesdata,'schedule':selectschedata,'shcedata':shcedata,'desdata':desdata,'userdata': userdata})
+            contact = Contact(
+                Name=Name,
+                Address=address,
+                Phone_Number=Contactnum,
+                Email=email,
+                Destination=location,
+                Schedule=schedule,
+                Details=detail,
+            )
+            contact.save()
+        purchasehis=Purchase_History.objects.filter(User=current_user)
+        return render(request, self.template_name,{'desid':selectdesdata,'schedule':selectschedata,'shcedata':shcedata,'desdata':desdata,'userdata': userdata,'purchase_history':purchasehis})
 class AboutusView(View):
     template_name = 'aboutus.html'
     
     def get(self, request):
         current_user = request.user.id
         userdata = User_Profile.objects.filter(Users=current_user)
-        return render(request, self.template_name,{'userdata': userdata})
+        purchasehis=Purchase_History.objects.filter(User=current_user)
+        return render(request, self.template_name,{'userdata': userdata,'purchase_history':purchasehis})
 class LoginView(View):
     template_name = 'login.html'
     
@@ -225,11 +300,18 @@ class SignupView(View):
         return redirect('onedaytwogether:index')
 
 
+from django.core.exceptions import ObjectDoesNotExist
+
 class CompleteProfile(View):
     template_name = 'CompleteProfiles.html'
     
     def get(self, request):
-        return render(request, self.template_name)
+        current_user = request.user.id
+        try:
+            userdata = User_Profile.objects.get(Users=current_user)
+            return render(request, self.template_name, {'userdata': userdata})
+        except User_Profile.DoesNotExist:
+            return render(request, self.template_name)
     
     def post(self, request, **kwargs):
         user = request.user
@@ -240,21 +322,26 @@ class CompleteProfile(View):
         dob = request.POST.get('birthdate')
         tel = request.POST.get('phone')
         detail = request.POST.get('detail')
-        address = request.POST.get('address')
+        street = request.POST.get('street')
+        city = request.POST.get('city')
+        country = request.POST.get('country')
         
         user_profile, created = User_Profile.objects.get_or_create(Users=user)
         user_profile.first_name = first_name
         user_profile.last_name = last_name
-        user_profile.avatar = avatar
+
+        if avatar:
+            user_profile.avatar = avatar  # Update avatar if a new file is provided
+
         user_profile.sex = sex
         user_profile.dob = dob
         user_profile.email = request.user.email
         user_profile.tel = tel
         user_profile.detail = detail
-        user_profile.Address = address
+        user_profile.Address = f"Street: {street} City: {city} Country: {country}"
         user_profile.status = True  # Assuming status is a BooleanField
         user_profile.save()
-
+        
         return redirect('onedaytwogether:index')
 class LogoutView(View):
     def get(self, request): 

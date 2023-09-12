@@ -4315,6 +4315,7 @@ textarea.form-control-lg {
   height: 155px;
   display: block;
   margin: 0 auto;
+  object-fit: contain !important;
 }
 
 .card-img,
@@ -11076,4 +11077,7 @@ margin: auto;
 }
 .Quantity{
   width:300px;
+      height: 38%;
+    margin-top: 3%;
+    WIDTH: 22%;
 }

@@ -4148,6 +4148,7 @@ textarea.form-control-lg {
 }
 
 .card {
+      margin-top: 9%;
   --bs-card-spacer-y: 1rem;
   --bs-card-spacer-x: 1rem;
   --bs-card-title-spacer-y: 0.5rem;
@@ -4277,6 +4278,7 @@ textarea.form-control-lg {
   height: 155px;
   display: block;
   margin: 0 auto;
+    object-fit: contain !important;
 }
 
 .card-img,
