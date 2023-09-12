@@ -21,16 +21,20 @@
 .menu{
     width: 100%;
     display: flex;
-    height: 50px;
+    justify-content: space-between;
+    padding: 0px 20px;
+    font-size: medium;
 }
+
 .menu-logo img{
-    width: 75px;
+    width: 120px;
 }
 
 
 .menu-icon{
-    padding-top: 12px;
+        padding-top: 32px;
     display: flex;
+    width:14.48px;
 }
 
 #bar{
@@ -136,6 +140,7 @@
 }
 .ButtonLS{
     height: 100px;
+    font-size: medium;
 }
 .ButtonLS button{
     padding: 4px;
@@ -158,7 +163,7 @@
 .destination div{
     width: 100%;
     position: relative;
-    margin-left: 70px;
+
 }
 .destination img{
     width: 90%;
@@ -351,9 +356,9 @@
     margin-top: 40px;
 }
 .explore p{
-    font-size: 40px;
+font-size: 40px;
     font-weight: bold;
-    margin-left: 800px;
+    text-align: end;
 }
 .quote-line {
     position: absolute;
