@@ -85,7 +85,7 @@ class ShopCategoryView(View):
     template_name = 'shop.html'
     
     def get(self, request,category):
-        allproducts = Shop.objects.filter(Product_Type=category, Quantity__gt=0)
+        allproducts = Shop.objects.filter(Product_Type=category)
         current_user = request.user.id
         userdata = User_Profile.objects.filter(Users=current_user)
         page_num = 20
@@ -93,7 +93,7 @@ class ShopCategoryView(View):
         page = request.GET.get('page')
         products = paginator.get_page(page)
         purchasehis=Purchase_History.objects.filter(User=current_user)
-        return render(request, self.template_name, {'userdata': userdata,'productdata':products,'purchase_history':purchasehis})
+        return render(request, self.template_name, {'category':category,'userdata': userdata,'productdata':products,'purchase_history':purchasehis})
 from decimal import Decimal
 from django.shortcuts import redirect
 from django.views import View
@@ -178,18 +178,27 @@ class CartDeleteView(View):
         Carts = get_object_or_404(Cart, id=id,Username=current_user)
         Carts.delete()
         return redirect('onedaytwogether:cart')
+class BookingDeleteView(View):
+    template_name = 'booking.html'
+    
+    def get(self, request,id):      
+        current_user = request.user.id
+        Carts = get_object_or_404(Contact, id=id,User=current_user)
+        Carts.delete()
+        return redirect('onedaytwogether:Booking')
 
 
 class ShopDetailView(View):
     template_name = 'product-detail.html'
     
     def get(self, request, id):
+        current_user = request.user.id
         try:
             product = Shop.objects.get(id=id)
         except Shop.DoesNotExist:
             return redirect('onedaytwogether:shop')  # Redirect to the shop
         purchasehis=Purchase_History.objects.filter(User=current_user)
-        current_user = request.user.id
+        
         userdata = User_Profile.objects.filter(Users=current_user)
         return render(request, self.template_name, {'userdata': userdata, 'productdata': product,'purchase_history':purchasehis})
 class ContactView(View):
@@ -212,6 +221,7 @@ class ContactView(View):
         userdata = User_Profile.objects.filter(Users=current_user)
         desdata = Destination.objects.all()
         shcedata=Schedule.objects.all().order_by('Schedule')
+        user = User.objects.get(id=request.user.id)
         
         Name = request.POST.get('Name')
         address = request.POST.get('address')
@@ -220,14 +230,17 @@ class ContactView(View):
         location_id = request.POST.get('Location')
         schedule_id = request.POST.get('Scheduleid')
         detail = request.POST.get('lettalk')
+        member = request.POST.get('member')
         if location_id:
             
             location = Destination.objects.get(id=location_id)
             schedule = Schedule.objects.get(id=schedule_id)
 
             contact = Contact(
+                User=user,
                 Name=Name,
                 Address=address,
+                Members=member,
                 Phone_Number=Contactnum,
                 Email=email,
                 Destination=location,
@@ -245,6 +258,16 @@ class AboutusView(View):
         userdata = User_Profile.objects.filter(Users=current_user)
         purchasehis=Purchase_History.objects.filter(User=current_user)
         return render(request, self.template_name,{'userdata': userdata,'purchase_history':purchasehis})
+class BookingView(View):
+    template_name = 'booking.html'
+    
+    def get(self, request):
+        current_user = request.user.id
+        
+        userdata = User_Profile.objects.filter(Users=current_user)
+        contact_data = Contact.objects.filter(User=current_user)
+        purchasehis=Purchase_History.objects.filter(User=current_user)
+        return render(request, self.template_name,{'data':contact_data,'userdata': userdata,'purchase_history':purchasehis})
 class LoginView(View):
     template_name = 'login.html'
     

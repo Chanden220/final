@@ -122,13 +122,16 @@ class Purchase_History(models.Model):
     class Meta():
         ordering = ['id']
 class Contact(models.Model):
+    User = models.ForeignKey(User, on_delete=models.CASCADE)
     Name = models.CharField(max_length=30)
     Address = models.CharField(max_length=30)
     Phone_Number = models.CharField(max_length=30)
     Email = models.EmailField(max_length=100)
+    Members = models.IntegerField(default=0)
     Destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
     Schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
-    Details = models.CharField(max_length=200)
+    Details = models.CharField(max_length=200,null=True)
+    status=models.BooleanField(default=False)
     def __str__(self):
         return str(self.Name)+ ' ' +str(self.Destination)+ ' ' +str(self.Schedule)
     class Meta():

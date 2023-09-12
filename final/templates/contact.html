@@ -77,6 +77,9 @@
 
 			<input id="text" type="text" name="email" placeholder="Email" value="{{ userdata.first.email}}"
 				class="input-width"><br><br>
+			<label>Members :</label><br>
+
+			<input id="text" type="number" name="member" placeholder="" min="1" class="input-width"><br><br>
 			<select class="form-control" name="Location" id="destinationSelect" style="width:89%">
 				<option selected disabled>Select Destination</option>
 				{% for j in desdata %}
