@@ -6,9 +6,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
     <link rel="stylesheet" href="{%static 'css/Homepage.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
@@ -136,6 +139,7 @@ img{
     }
 
 }
+
  </style>
 
 </head>
@@ -156,7 +160,7 @@ img{
 
         <div class="infor">
             <h2>Welcome</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p>Our knowledgeable guides will lead you through scenic trails, revealing the secrets of the wilderness and sharing their passion for the great outdoors. Whether you're a seasoned camper or a first-time explorer, our tours cater to all levels of experience.Join us on an unforgettable camping tour and let the beauty of nature captivate your senses.</p>
         </div>
         <div id="dot">
             <span class="dot"></span>
@@ -188,51 +192,122 @@ img{
             
         </div>
     </div>
-    <div class="destination">
+<div class="destination">
         <br><br><br><br><br>
-        <p>EXPLORE OUR DESTINATION</p>
-        <div class="khnong-phsar">
-            <a href="FirstDestination.html"><img src="{%static 'img/pt.jpg'%}" alt=""></a>
-            <h1>
-
-            </h1>
-        </div>
-        <div class="khnong-phsar">
-            <img src="" alt="">
-            <h1>
-
-            </h1>
-        </div>
-        <div class="khnong-phsar">
-            <img src="" alt="">
-            <h1>
-
-            </h1>
+<div class="explore">
+    <div class="row d-flex">
+        <div class="col-md-8">
+            <p class="explore">EXPLORE OUR DESTINATION</p>
         </div>
     </div>
-    <div class="shop">
-        <div class="shop-img">
-            <img src="" alt="">
+</div>
+</div>
+<style>
+    .des1 {
+        position: relative;
+    }
+  
+    .des1 img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+  
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+  
+    .overlay:hover {
+        opacity: 1;
+    }
+  
+    .overlay p {
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+  
+    .overlay button {
+        margin-top: 10px;
+    }
+  
+    @media screen and (max-width: 768px) {
+        .overlay p {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="des1 d-flex flex-column">
+                <a href="FirstDestination.html"><img src="{%static 'img/kp.jpg'%}" alt=""></a>
+                <div class="overlay">
+                    <div class="d-flex flex-column">
+                        <p>We offer you a place and a wide range of camping supplies to make your selection enjoyable and create a perfect connection between you and nature</p>
+                        <button class="btn btn-primary">Explore more</button>
+                    </div>
+                </div>
+                <p class="text-center mt-2">Image 1</p>
+            </div>
         </div>
-        <div class="shop-info">
-            <h1>Shop for your</h1>
-            <h2>supplies!</h2>
-            <p>We offer varieties of camping <br> packages for you to choose from, <br> depending on lyour dream
-                <br> destination !
-            </p><br><br>
-            <a href="shop.html"><input type="button" value="        Go to shop" name="btn-shop" id=""></a>
+        <div class="col-md-4 offset-md-4">
+            <div class="des1 d-flex flex-column">
+                <a href="FirstDestination.html"><img src="{%static 'img/kp.jpg'%}" alt=""></a>
+                <div class="overlay">
+                    <div class="d-flex flex-column">
+                        <p>We offer you a place and a wide range of camping supplies to make your selection enjoyable and create a perfect connection between you and nature</p>
+                        <button class="btn btn-primary">Explore more</button>
+                    </div>
+                </div>
+                <p class="text-center mt-2">Image 2</p>
+            </div>
         </div>
     </div>
-    <div class="footer" style="background-color: #FFF505;">
-        <div class="info-footer">
-            <img src="" alt="">
-            <p>
-
-            </p>
+    <br><br><br><br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="des1 d-flex flex-column">
+                <a href="FirstDestination.html"><img src="{%static 'img/kp.jpg'%}" alt=""></a>
+                <div class="overlay">
+                    <div class="d-flex flex-column">
+                        <p>We offer you a place and a wide range of camping supplies to make your selection enjoyable and create a perfect connection between you and nature</p>
+                        <button class="btn btn-primary">Explore more</button>
+                    </div>
+                </div>
+                <p class="text-center mt-2">Image 3</p>
+            </div>
         </div>
-
     </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="shop">
+    <h3>Shop for your supplies!</h3>
+    <br><br>
+    <h6>We offer a wise variety of camping packages
+        for you to choose from, depending on your dream destination! </h6><br><br><br>
+    <button>Go to Shop</button>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div style="width: 100%;">
+    </div>
+    <div class="footer1">
+        <img src="{%static 'img/foot3.png'%}" alt="">
 
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

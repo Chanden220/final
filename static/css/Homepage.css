@@ -1,6 +1,22 @@
-
+*{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 .container-fluid{
     width: 100%;
+}
+.shop button {
+    font-size: 15px;
+    background-color: yellow;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 30px;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.shop button:hover {
+    background-color: #FFD700;
 }
 .menu{
     width: 100%;
@@ -140,70 +156,134 @@
 }
 /* destination */
 
+.explore .row.d-flex {
+    align-items: center;
+}
 
+.explore .col-md-8 p,
+.explore .col-md-4 button {
+    display: inline-block;
+    vertical-align: middle;
+}
 .destination div{
     width: 100%;
     position: relative;
+    margin-left: 70px;
 }
 .destination img{
-    width: 100%;
-    height: 533px;
+    width: 90%;
+    height: 90%;
 }
-.destination h1{
-    color: white;
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%,-15%);
-}
-
-.shop{
-    width: 100%;
-    display: flex;
-}
-.shop .shop-img{
-    width: 50%;
-}
-.shop .shop-img img{
+.footer1 img{
+    object-fit: cover;
     width: 100%;
     height: 100%;
+    position: relative;
+    
 }
-.shop .shop-info{
-    width: 50%;
-    padding: 15px 25px 25px 25px;
-    background-color: #124747;
-    color: white;
+.des1 img{
+    float: left;
+}
+.des3 img{
+    float: right;
+}
 
+.destination h1{
+    color: black;
 }
-.shop .shop-info h1{
-    font-size: 55px;
+.des img:hover{
+    transform: scale(1.1);
+    transition: transform 0.3s;
 }
-.shop .shop-info h2{
-    font-size: 45px;
-    color: #FFF505;
-    text-align: right;
-     
+.des1 {
+    position: relative;
+    overflow: hidden;
 }
-.shop .shop-info p{
-    font-size: 30px;
-}
-.shop .shop-info input{
-    color: #124747;
-    background-color: #FFF505;
-    border: 1px solid #FFF505;
-    width: 220px;
-    height: 65px;
-    font-size: 23px;
-    display: flex;
-    align-content: center;
 
+.des1 img {
+    transition: transform 0.3s ease;
 }
-.shop .shop-info a{
-    text-decoration: none;
+
+.des1:hover img {
+    transform: scale(1.1);
 }
-.shop .shop-info button value{
-    text-align: center;
+.overlay h1{
+    font-size: 35px;
+    margin-left: 200px;
 }
+.overlay button{
+    margin-left: 200px;
+    font-size: 20px;
+}
+.khnong-phsar:hover .overlay {
+    opacity: 1;
+}
+.shop h3{
+    font-size: 50px;
+    color:white;
+}
+.shop button{
+    font-size: 25px;
+    background: yellow;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.shop h6{
+    font-size: 20px;
+    font-style: italic;
+    max-width: 400px;
+    color:white;
+}
+.shop{
+    background-color: #305D34;
+    padding: 40px;
+    border-radius: 40px; 
+}
+@media screen and (max-width: 768px) {
+    .info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-text {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .info-img {
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 768px) {
+    .shop {
+        padding: 20px;
+        border-radius: 20px;
+        margin-left: -10px;
+        max-width: 50px;
+    
+    }
+    .shop h3 {
+        font-size: 20px;
+    }
+
+    .shop h6 {
+        font-size: 14px;
+    }
+
+    .shop button {
+        font-size: 16px;
+    }
+}
+
+.shop {
+    background-color: #305D34;
+    margin-left: 80px;
+    padding: 20px;
+    max-width: 1550px;
+}
+
 /* footer */
 .footer{
     width: 100%;
@@ -257,9 +337,11 @@
     margin-bottom: 0.8rem;
     outline: none;
     text-align: center;
+    font-size: 40px;
 }
 .info-text p{
     max-width: 500px;
+    font-size: 20px;
 }
 .info-text h1:hover{
         font-variation-settings: "wght" 582; 
@@ -269,13 +351,18 @@
     position: relative;
     padding-left: 50px;
 }
-.destination p{
-    font-weight: bold;
-    font-size: 40px;
-    max-width: 400px;
-    margin-left: 900px;
-}
 
+.des1 p{
+    font-size: 20px;
+    max-width: 400px;
+    margin-left: 200px;
+    margin-top: 40px;
+}
+.explore p{
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 800px;
+}
 .quote-line {
     position: absolute;
     left: 0;
@@ -345,3 +432,4 @@
     width: 35%;
 }
 }
+
