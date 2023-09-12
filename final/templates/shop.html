@@ -23,120 +23,8 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{%static 'css/shop.css' %}" rel="stylesheet" />
 </head>
-<style>
-    .nanan {
-        margin-left: 7%;
-    }
 
-    .AllPro {
-        padding: 25px;
-        font-family: Segoe UI Variable Text Semibold;
-    }
-
-    .cphone {
-        display: none;
-    }
-
-    .submitsa {
-        width: 70px;
-        font-size: medium;
-        color: #FFDF2B;
-        background-color: #066173;
-        border: 0px;
-        border-radius: 20px;
-    }
-
-    .searchbox {
-        border-color: #066173;
-        width: 400px;
-        border-radius: 20px;
-    }
-
-    .Titeltext {
-        padding: 25px;
-        font-family: Arial Black;
-    }
-
-    .cartimg {
-        width: 40px;
-        margin-right: 2px;
-    }
-
-    .h2camping {
-        padding: 25px;
-        font-family: Segoe UI Variable Text Semibold;
-    }
-
-    @media (max-width: 738px) {
-        .nanan {
-            margin-left: -4%;
-        }
-
-        .cartimg {
-            width: 30px;
-            margin-right: 1%;
-            margin-top: -1%;
-        }
-
-        .submitsa {
-            font-size: medium;
-        }
-
-        .cphone {
-            display: block;
-        }
-
-        .searchbox {
-            border-color: #066173;
-            width: auto;
-            border-radius: 20px;
-        }
-
-        .masthead {
-            padding: 25px;
-            margin: 25px;
-            margin-top: -6% !important;
-        }
-
-        .allserach {
-            margin-top: -15%;
-        }
-
-        .cpc {
-            display: none;
-        }
-
-        .Titeltext {
-            font-size: larger;
-        }
-
-        .NT {
-            margin-top: -11%;
-            font-size: small;
-        }
-
-        .AllPro {
-            margin-top: -4%;
-            font-size: large;
-        }
-
-        .h2camping {
-            padding: 25px;
-            font-family: Segoe UI Variable Text Semibold;
-            margin-top: -7%;
-        }
-
-        .masthead {
-            margin-top: -9% !important;
-        }
-    }
-
-
-    .searchbox {
-        padding-left: 2%;
-    }
-</style>
-<h1 class="Titeltext" align="center" style="">Welcome To Our Shop</h1>
+<h1 class="Titeltext" align="center">Welcome To Our Shop</h1>
 <div class="header-line">
     <hr>
 </div>
@@ -146,121 +34,104 @@
     <!-- Masthead-->
     <header class="masthead">
         <div class="container cpc">
-            <div class="row">
-                <div class="col-md-3">
-                    <a class="btn btn-primary btn-xl" href="shop-category.html?category=Equipment">Campaign
-                        Equipment</a>
+            <form action="{% url 'onedaytwogether:shop' %}" method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a class="btn btn-primary btn-xl" href="Equipment">Campaign
+                            Equipment</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="btn btn-primary btn-xl" href="Tents">Camping Tents</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="btn btn-primary btn-xl" href="Bags">Camping Bags</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="btn btn-primary btn-xl" href="Clothes">Camping Clothes</a>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <a class="btn btn-primary btn-xl" href="shop-category.html?category=Tents">Camping Tents</a>
+                <div class="row nanan">
+                    <div class="col-md-4">
+                        <a class=" btn btn-primary btn-xl" href="Shoes">Camping Shoes</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-primary btn-xl" href="Accessory">Camping
+                            Accessories</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-primary btn-xl" href="Shelters">Camping
+                            Shelters</a>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <a class="btn btn-primary btn-xl" href="shop-category.html?category=Bags">Camping Bags</a>
-                </div>
-                <div class="col-md-3">
-                    <a class="btn btn-primary btn-xl" href="shop-category.html?category=Clothes">Camping Clothes</a>
-                </div>
-            </div>
-            <div class="row nanan">
-                <div class="col-md-4">
-                    <a class=" btn btn-primary btn-xl" href="shop-category.html?category=Shoes">Camping Shoes</a>
-                </div>
-                <div class="col-md-4">
-                    <a class="btn btn-primary btn-xl" href="shop-category.html?category=Accessory">Camping
-                        Accessories</a>
-                </div>
-                <div class="col-md-4">
-                    <a class="btn btn-primary btn-xl" href="shop-category.html?category=Shelters">Camping Shelters</a>
-                </div>
-            </div>
+            </form>
+
         </div>
         <div class="container cphone">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <select class="form-select" onchange="window.location.href=this.value;">
-                            <option value="shop-category.html?category=Equipment">Campaign Equipment</option>
-                            <option value="shop-category.html?category=Tents">Camping Tents</option>
-                            <option value="shop-category.html?category=Bags">Camping Bags</option>
-                            <option value="shop-category.html?category=Clothes">Camping Clothes</option>
-                            <option value="shop-category.html?category=Shoes">Camping Shoes</option>
-                            <option value="shop-category.html?category=Accessory">Camping Accessories</option>
-                            <option value="shop-category.html?category=Shelters">Camping Shelters</option>
-                        </select>
-                    </div>
-                </div>
+                <select class="form-select" onchange="window.location.href=this.value;">
+                    <option value="Equipment">Campaign Equipment</option>
+                    <option value="Tents">Camping Tents</option>
+                    <option value="Bags">Camping Bags</option>
+                    <option value="Clothes">Camping Clothes</option>
+                    <option value="Shoes">Camping Shoes</option>
+                    <option value="Accessory">Camping Accessories</option>
+                    <option value="Shelters">Camping Shelters</option>
+                </select>
             </div>
         </div>
     </header>
-    <form action="shop_search.html" method="get" class="allserach">
+    <form action="{% url 'onedaytwogether:shop' %}" method="post" class="allserach">
+        {% csrf_token %}
         <div id="contain-search" align="center" style="  margin-top: 15%;">
-            <a href="cart.html"><img src="{% static 'Camping/add_shopping_cart_80px.png' %}" class="cartimg"
-                    style=""></a>
+            <a href="{% url 'onedaytwogether:cart' %}"><img src="{% static 'Camping/add_shopping_cart_80px.png' %}"
+                    class="cartimg" style=""></a>
             <input type="search" placeholder="search" name="search" id="" class="searchbox">
             <input type="submit" value="Search" class="submitsa">
         </div>
     </form>
     <h2 class="AllPro" align="center">All of the products:</h2>
     </br>
-
+    {% if productdata|length > 0 %}
     <div>
         <p class="NT" style="text-align: center;">
-            Number of items:
+            Number of items: {{ productdata|length }}
         </p>
     </div>
     <!-- Camping -->
     <div id="portfolio">
-        <form method="POST" action="campingtarp.html">
+        <form method="POST">
             <div class="row g-0" align="center">
-                <!--1-->
-                <div class="col-lg-3">
+                {% for j in productdata %}
+                {% if j.Quantity > 0 %}
+                <div class="col-md-3">
                     <div class="card">
                         <!-- Sale badge-->
                         <div class="badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                            {{ j.New_Price }}$
                         </div>
                         <br><br>
                         <!-- Product image-->
-                        <a href="">
-                            <img class="card-img-top" src="" alt="..." />
+                        <a href="../ShopDetail/{{ j.id }}">
+                            <img class="card-img-top" src="../../../onedaytwogether/media/{{ j.Image }}" alt="..." />
                         </a>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">
-
+                                    {{ j.Product_name }}
                                 </h5>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="card">
-                        <!-- Sale badge-->
-                        <div class="badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                        </div>
-                        <br><br>
-                        <!-- Product image-->
-                        <a href="">
-                            <img class="card-img-top" src="" alt="..." />
-                        </a>
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">
-
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+                {% endif %}
+                {% endfor %}
             </div>
     </div>
-    </div>
-
+    {% else %}
+    <p style="margin-left: 43.5%;font-size: large;">There is no product</p>
+    {% endif %}
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- SimpleLightbox plugin JS-->

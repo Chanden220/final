@@ -28,8 +28,10 @@
 
 .header
 {
-    width: 100%;  
+    width: 100%;
+    margin-top: 4%;
 }
+
 .header h3{
     color: #000000;
 }
@@ -92,7 +94,7 @@ background: #124747;
 .knongpsar{
 
     width: 100%;
-    padding: 25px 15px 0px 15px;
+    padding: 25px 10px 0px 176px;
     font-size: 30px;
 
 }
@@ -146,4 +148,84 @@ background: #124747;
     display: flex;
     justify-content:space-evenly;
 }
+
+@media (max-width: 738px)
+{
+
+.header
+{
+        width: 100%;
+    margin-top: 12%;
+}
+}
+.right-side{
+    margin-left: 3%;
+}
+.Greenblock {
+    width: 107.5%;
+    margin-left: -5%;
+            height: 22px;
+            background: #124747;
+        }
+
+        /* Styles for larger screens */
+        .responsive-text {
+    font-size: 23px;
+    margin-top: -30px;
+        }
+
+        /* Media query for smaller screens */
+        @media only screen and (max-width: 768px) {
+            .responsive-text {
+                font-size: 16px;
+                    margin-top: -7%;
+            }
+            b{
+    font-size: large;
+}
+            .Greenblock {
+    width: 115.7%;
+    margin-left: -8%;
+            height: 22px;
+            background: #124747;
+        }
+
+            .knongpsar{
+
+    width: 100%;
+    padding: 25px 10px 0px 15px;
+    font-size: 30px;
+
+}
+.right-side{
+    margin-left: 0%;
+}
+        }
+
+        /* Media query for even smaller screens */
+        @media only screen and (max-width: 480px) {
+            .Greenblock {
+    width: 115.7%;
+    margin-left: -8%;
+            height: 22px;
+            background: #124747;
+        }
+            .responsive-text {
+                font-size: 14px;
+                    margin-top: -11%;
+            }
+            .knongpsar{
+
+    width: 100%;
+    padding: 25px 10px 0px 15px;
+    font-size: 30px;
+
+}
+            b{
+    font-size: large;
+}
+.right-side{
+    margin-left: 0%;
+}
+        }
 

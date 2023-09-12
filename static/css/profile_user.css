@@ -39,7 +39,12 @@
 .fa-user{
     font-size: 17px;
 }
-
+@media (min-width:739px)
+{
+#menu-link-ul{
+    display: block;
+}
+}
 @media (max-width: 738px)
 {
 #menu-link-ul{

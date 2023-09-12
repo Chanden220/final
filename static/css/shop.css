@@ -1,15 +1,5 @@
 @charset "UTF-8";
-/*!
-* Start Bootstrap - Creative v7.0.7 (https://startbootstrap.com/theme/creative)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
-*/
-/*!
- * Bootstrap  v5.2.3 (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -11017,3 +11007,132 @@ header.masthead h1, header.masthead .h1 {
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
 }
+    .nanan {
+        margin-left: 7%;
+    }
+
+    .AllPro {
+        padding: 25px;
+        font-family: Segoe UI Variable Text Semibold;
+    }
+
+    .cphone {
+        display: none;
+    }
+
+    .submitsa {
+        width: 70px;
+        font-size: medium;
+        color: #FFDF2B;
+        background-color: #066173;
+        border: 0px;
+        border-radius: 20px;
+    }
+
+    .searchbox {
+        border-color: #066173;
+        width: 400px;
+        border-radius: 20px;
+    }
+
+    .Titeltext {
+        padding: 25px;
+        font-family: Arial Black;
+    }
+
+    .cartimg {
+        width: 40px;
+        margin-right: 2px;
+    }
+
+    .h2camping {
+        padding: 25px;
+        font-family: Segoe UI Variable Text Semibold;
+    }
+
+
+
+
+    .searchbox {
+        padding-left: 2%;
+    }
+        @media only screen and (max-width: 768px) {
+          .card{
+                width: 73%;
+    height: 84%;
+          }
+          .row > * {
+    flex-shrink: 0;
+    width: 33%;
+    max-width: 100%;
+  }
+  .form-select{
+    margin-top:6%;
+  }
+        .NT {
+    margin-top: -6%;
+    font-size: small;
+}}
+    @media (max-width: 738px) {
+        .nanan {
+            margin-left: -4%;
+        }
+
+        .cartimg {
+            width: 30px;
+            margin-right: 1%;
+            margin-top: -1%;
+        }
+
+        .submitsa {
+            font-size: medium;
+        }
+
+        .cphone {
+            display: block;
+        }
+
+        .searchbox {
+            border-color: #066173;
+            width: auto;
+            border-radius: 20px;
+        }
+
+        .masthead {
+            padding: 25px;
+            margin: 25px;
+            margin-top: -6% !important;
+        }
+
+        .allserach {
+            margin-top: -15%;
+        }
+
+        .cpc {
+            display: none;
+        }
+
+        .Titeltext {
+            font-size: larger;
+        }
+
+        .NT {
+            margin-top: -6%;
+            font-size: small;
+        }
+
+        .AllPro {
+            margin-top: -4%;
+            font-size: large;
+        }
+
+        .h2camping {
+            padding: 25px;
+            font-family: Segoe UI Variable Text Semibold;
+            margin-top: -7%;
+        }
+
+        .masthead {
+            margin-top: -9% !important;
+        }
+    }

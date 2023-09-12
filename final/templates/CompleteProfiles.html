@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Signup</title>
+	<link rel="stylesheet" href="{% static 'css/login&signup.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+
+<style>
+	.inputna {
+		font-size: medium;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		width: 80%;
+		margin-top: 2%;
+	}
+
+	.imagePreview {
+		display: none;
+		width: 100px;
+		margin-left: 28%;
+		border: 1px black dashed;
+		border-radius: 46%;
+		height: 95px;
+
+	}
+
+	@media (max-width: 738px) {
+		.ca {
+			margin-left: 0% !important;
+			margin-top: 6% !important;
+		}
+	}
+</style>
+
+<body>
+	<div align=center>
+		<img src="{% static 'image/logo.png' %}" style="height: 80px;">
+	</div>
+	<div class="line" style="height: 2px; background-color:#9B9B9B; text-align: center;width:100%;"></div>
+	<a href="{% url 'onedaytwogether:index' %}" style="margin: auto;text-decoration:none;margin-left:1%">Home</a>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="signup">
+		<form method="post" action="{% url 'onedaytwogether:CompleteProfile' %}" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="abovetext"><br>COMPLETE YOUR</div>
+			<div class="profile">PROFILE</div>
+			<div class="input">
+				<img id="imagePreview" class="imagePreview" src="#" alt="Image Preview" />
+				<p>Profile Image :</p>
+				<input type="file" name="file" id="fileToUpload" placeholder="Choose a Picture"><br><br>
+				<div class="row">
+					<div class="col-md-6">
+						<input id="first_name" type="text" name="first_name" placeholder="First Name" class="inputna">
+					</div>
+					<div class="ca col-md-6" style="margin-left: -10%;">
+						<input id="last_name" type="text" name="last_name" placeholder="Last Name" class="inputna">
+					</div>
+				</div>
+				<br>
+				<label>Sex:</label>
+				<select name="sex" class="inputna" style="    margin-bottom: 4%;
+    width: 69% !important;
+    margin-left: 3%;">
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+				</select>
+				<input id="birthdate" type="date" name="birthdate" placeholder="Birth Date(YYYY/MM/DD)"
+					class="inputna"><br><br>
+				<input id="phone" type="text" name="phone" placeholder="Phone" class="inputna"><br><br>
+				<input id="address" type="text" name="address" placeholder="Address" class="inputna"><br><br>
+
+				<input id="submitBtn" type="submit" value="Create"
+					style="margin-top:2%;font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px"><br><br>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		// Select the input fields
+		const fileInput = document.getElementById('fileToUpload');
+		const imagePreview = document.getElementById('imagePreview');
+		// Select the submit button
+		const submitBtn = document.getElementById('submitBtn');
+		function displayImage() {
+			const file = fileInput.files[0];
+			if (file) {
+				imagePreview.style.display = 'block';
+				const reader = new FileReader();
+				reader.onload = function (event) {
+					imagePreview.src = event.target.result;
+				};
+				reader.readAsDataURL(file);
+			} else {
+				imagePreview.src = ''; // Clear the image preview
+			}
+		}
+
+		fileInput.addEventListener('change', displayImage);
+		function allowOnlyNumbers(event) {
+			// Get the key code of the pressed key
+			const keyCode = event.which || event.keyCode;
+			const keyValue = String.fromCharCode(keyCode);
+
+			// Allow only numeric input (0-9)
+			if (!/^[0-9]+$/.test(keyValue)) {
+				event.preventDefault();
+			}
+		}
+
+		// Add an event listener to the phone input field
+		const phoneInput = document.getElementById('phone');
+		phoneInput.addEventListener('keypress', allowOnlyNumbers);
+	</script>
+</body>
+
+</html>
