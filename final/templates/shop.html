@@ -1,5 +1,6 @@
 {% extends 'header.html' %}
 {%load static%}
+{% block title %}Shop{% endblock title %}
 {% block main_body %}
 <!DOCTYPE html>
 <html lang="en">
@@ -102,33 +103,69 @@
         <form method="POST">
             <div class="row g-0" align="center">
                 {% for j in productdata %}
-                {% if j.Quantity > 0 %}
+
                 <div class="col-md-3">
                     <div class="card">
                         <!-- Sale badge-->
                         <div class="badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
                             {{ j.New_Price }}$
                         </div>
-                        <br><br>
-                        <!-- Product image-->
-                        <a href="../ShopDetail/{{ j.id }}">
-                            <img class="card-img-top" src="../../../onedaytwogether/media/{{ j.Image }}" alt="..." />
-                        </a>
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">
-                                    {{ j.Product_name }}
-                                </h5>
-                            </div>
+                        {% if j.Quantity <= 0 %} <div class="badge text-red position-absolute" style="top: 0.5rem;
+    right: 9.5rem;
+    width: 40%;background-color:red">
+                            Out of stock
+                    </div>
+                    {% endif %}
+                    <br><br>
+                    <!-- Product image-->
+                    <a href="../ShopDetail/{{ j.id }}">
+                        <img class="card-img-top" src="../../../onedaytwogether/media/{{ j.Image }}" alt="..." />
+                    </a>
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">
+                                {{ j.Product_name }}
+                            </h5>
                         </div>
                     </div>
                 </div>
-                {% endif %}
-                {% endfor %}
             </div>
+
+
+            {% endfor %}
     </div>
+    </div>
+    <nav aria-label="Page navigation example" style="    margin-top: 2%;
+    margin-left: 3%;">
+        <ul class="pagination">
+            {% if productdata.paginator.num_pages == 1 %}
+            {% else %}
+            {% if productdata.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">&laquo;First</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ productdata.previous_page_number }}">Previous</a>
+            </li>
+            {% endif %}
+            {% for i in productdata.paginator.page_range %}
+            <li class="page-item {% if productdata.number == i %}active{% endif %}">
+                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+            </li>
+            {% endfor %}
+            {% if productdata.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ productdata.next_page_number }}">Next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ productdata.paginator.num_pages }}">Last &raquo;</a>
+            </li>
+            {% endif %}
+            {% endif %}
+        </ul>
+    </nav>
     {% else %}
     <p style="margin-left: 43.5%;font-size: large;">There is no product</p>
     {% endif %}

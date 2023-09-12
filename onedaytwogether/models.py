@@ -29,20 +29,16 @@ Product_Type = (
 ) 
 
 def validate_file_extension(value): 
-    ext = os.path.splitext(value.name)[1]  # [0] returns path+filename
+    ext = os.path.splitext(value.name)[1]
     valid_extensions = ['.png', '.jpg', '.jpeg']
     if not ext.lower() in valid_extensions:
         raise ValidationError(u'Unsupported file extension.')
 
 def User_Profile_directory_path(request, filename):
- # return "files/users/%s/%s" % (request.user.id, filename)
-    return '/'.join(['content', request.tel, filename])
-
+    return '/'.join(['content', request.email, filename])
 def Destination_directory_path(request, filename):
- # return "files/users/%s/%s" % (request.user.id, filename)
     return '/'.join(['content', request.destination, filename])
 def Product_directory_path(request, filename):
- # return "files/users/%s/%s" % (request.user.id, filename)
     return '/'.join(['content', request.Product_name, filename])
 
 class User_Profile(models.Model):
@@ -54,7 +50,7 @@ class User_Profile(models.Model):
     dob = models.DateField(default='2023-09-03')
     email = models.EmailField(max_length=150)
     tel = models.CharField(max_length=30)
-    Address = models.CharField(max_length=30)
+    Address = models.CharField(max_length=1000)
     detail = RichTextField(blank=True, null=True)
     status = models.BooleanField(default=True)
     def __str__(self):
@@ -120,6 +116,7 @@ class Purchase_History(models.Model):
     Cost = models.DecimalField(max_digits=10, decimal_places=2)
     Date = models.DateField()
     detail = RichTextField(blank=True, null=True)
+    status=models.BooleanField(default=False)
     def __str__(self):
         return str(self.User)+ ' ' +str(self.Product_name)
     class Meta():
@@ -136,15 +133,10 @@ class Contact(models.Model):
         return str(self.Name)+ ' ' +str(self.Destination)+ ' ' +str(self.Schedule)
     class Meta():
         ordering = ['id']
-Sized = (
-    ('L', 'Large'),
-    ('M', 'Medium'),
-    ('S', 'Small')
-)
+
 class Cart(models.Model):
     Username = models.ForeignKey(User, on_delete=models.CASCADE)
     Product_name = models.ForeignKey(Shop, on_delete=models.CASCADE)
-    Sized = models.CharField(max_length=7, choices=Sized)
     Quantity = models.IntegerField() 
     Price = models.DecimalField(max_digits=10, decimal_places=2)
     def str(self):

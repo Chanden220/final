@@ -65,7 +65,7 @@ class ContactAdmin(admin.ModelAdmin):
     search_fields = ['id', 'Name', 'Destination', 'Schedule']
 admin.site.register(Contact, ContactAdmin)
 class CartAdmin(admin.ModelAdmin):
-    list_display = ['id', 'Username', 'Product_name', 'Price', 'Sized', 'Quantity']
+    list_display = ['id', 'Username', 'Product_name', 'Price', 'Quantity']
     list_display_links = ['id', 'Username', 'Product_name']
     list_per_page = 5
     search_fields = ['id', 'Username', 'Product_name']

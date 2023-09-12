@@ -1,5 +1,6 @@
 {% extends 'header.html' %}
 {% load static %}
+{% block title %}Contact{% endblock title %}
 {% block main_body %}
 
 
@@ -56,7 +57,7 @@
 <br>
 <input type="hidden" value="{{ schedule.first.id }}" id="firstscheid">
 <div class="contact">
-	<form method="post" class="formcontact" action="{% url 'onedaytwogether:contact' %}">
+	<form method="post" class="formcontact" action="{% url 'onedaytwogether:contact' %}" id="myForm">
 		{% csrf_token %}
 		<div class="abovetext"><br>
 			<p>Get in <span style="color:#124747">touch</span></p>
@@ -109,7 +110,8 @@
 			</select>
 
 
-			<input id="text" type="text" name="lettalk" placeholder="Let talk" class="input-width"><br><br>
+			<input id="text" type="text" name="lettalk" placeholder="Let talk" class="input-width"
+				style="margin-top:2%"><br><br>
 			<input id="button" type="submit" value="Submit" class="Submitbtn" style=""><br>
 		</div>
 		{% else %}
@@ -158,8 +160,48 @@
 		</select>
 
 		<input id="text" type="text" name="lettalk" placeholder="Let talk"
-			style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+			style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:4%"><br><br>
 		<input id="button" type="submit" value="Submit" class="Submitbtn" style=""><br>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script>
+			document.getElementById("myForm").addEventListener("submit", function (event) {
+				event.preventDefault(); // Prevent the default form submission
+
+				const swalWithBootstrapButtons = Swal.mixin({
+					customClass: {
+						confirmButton: 'btn btn-success',
+						cancelButton: 'btn btn-danger'
+					},
+					buttonsStyling: false
+				});
+
+				swalWithBootstrapButtons.fire({
+					title: 'Are you sure?',
+					text: "You won't be able to revert this!",
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonText: 'Yes, Send!',
+					cancelButtonText: 'No, cancel!',
+					reverseButtons: true
+				}).then((result) => {
+					if (result.isConfirmed) {
+						swalWithBootstrapButtons.fire(
+							'Send!',
+							'Send Successfully',
+							'success'
+						);
+						document.getElementById("myForm").submit(); // Submit the form
+					} else if (result.dismiss === Swal.DismissReason.cancel) {
+						swalWithBootstrapButtons.fire(
+							'Cancelled',
+							'Send Cancelled',
+							'error'
+						);
+					}
+				});
+			});
+		</script>
+	</form>
 </div>
 {% endif %}
 

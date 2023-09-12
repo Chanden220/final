@@ -34,18 +34,20 @@
     background: white;
     border-radius: 6px;
     margin-left: 89%;
-    margin-top: 4%;
+    margin-top: 2%;
     position: absolute;
     transform: translate(-50%,-50%);
     text-align: center;
     border: 10px;
-    border-color: black;
+    border: 1px black solid !important;
+    border-radius: 22px;
 
 }
 .User img{
     border-radius: 50%;
-    width: 50px;
+    width: 67px;
     height: auto;
+    object-fit: contain;
 }
 
 .fa-user{
@@ -120,9 +122,11 @@
     height: 100px;
 }
 .ButtonLS button{
-    padding: 10px;
-    margin-top: 10%;
-    border-radius: 15px;
+    padding: 4px;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    border-radius: 10px;
+    font-size: small;
 }
 /* destination */
 

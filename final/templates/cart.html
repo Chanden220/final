@@ -1,7 +1,7 @@
 {% extends 'header.html' %}
 {%load static%}
 {% block main_body %}
-
+{% block title %}Cart{% endblock title %}
 
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap Icons-->
@@ -56,19 +56,29 @@
                             </p>
                         </div>
                         <div class="col-lg-2" style="margin-left: 75px;">
+                            {% for ap in allproduct %}
+                            {% if i.Product_name.id == ap.id %}
+                            {% if i.Quantity > ap.Quantity %}
                             <label for="quantity" class="form-label">Quantity:
                                 {{ i.Quantity }}
                             </label>
+                            <label for="quantity" class="form-label">Available only:
+                                {{ ap.Quantity }}
+                            </label>
+                            {% else %}
+                            <label for="quantity" class="form-label">Quantity:
+                                {{ i.Quantity }}
+                            </label>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
                         </div>
                         <div class="col-lg-2" style="margin-left: -40px;">
                             <p class="text-center">
-
                                 <a href="Delete/{{ i.id }}"><input type="submit" value="X"
                                         style="background-color:white;color: red;border:0px;margin-left:60px"></a>
                             </p>
-
                         </div>
-
                     </div>
                 </div>
                 {% endfor %}
@@ -101,14 +111,57 @@
 
             <hr style="height: 3px;">
             <!--Total-->
-            <h3 align="left" style="padding-left: 75px; font-size: medium;">Estimated total:
-                {{ total_price }}$
-            </h3>
-            <!--Checkout-->
-            <div class="check" align="left">
-                <a href=""><input type="submit" value="Checkout"
-                        style=" width: 300px; height: 40px; color: #FFDF2B; margin: 25px; background-color: #124747;"></a>
-            </div>
+            <form action="{% url 'onedaytwogether:purchase' %}" method="post" id="myForm">
+                {% csrf_token %}
+                <h3 align="left" style="padding-left: 75px; font-size: medium;">Estimated total: {{ total_price }}$</h3>
+                <input type="hidden" value="{{ total_price }}" name="alltotal">
+                <!-- Checkout -->
+                <div class="check" align="left">
+                    <input type="submit" value="Checkout" id="checkoutBtn"
+                        style="width: 300px; height: 40px; color: #FFDF2B; margin: 25px; background-color: #124747;">
+                </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                    document.getElementById("myForm").addEventListener("submit", function (event) {
+                        event.preventDefault(); // Prevent the default form submission
+
+                        const swalWithBootstrapButtons = Swal.mixin({
+                            customClass: {
+                                confirmButton: 'btn btn-success',
+                                cancelButton: 'btn btn-danger'
+                            },
+                            buttonsStyling: false
+                        });
+
+                        swalWithBootstrapButtons.fire({
+                            title: 'Are you sure?',
+                            text: "You won't be able to revert this!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes, Purchase!',
+                            cancelButtonText: 'No, cancel!',
+                            reverseButtons: true
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                swalWithBootstrapButtons.fire(
+                                    'Purchased!',
+                                    'Purchase Successfully',
+                                    'success'
+                                );
+                                document.getElementById("myForm").submit(); // Submit the form
+                            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                                swalWithBootstrapButtons.fire(
+                                    'Cancelled',
+                                    'You cancelled your purchase',
+                                    'error'
+                                );
+                            }
+                        });
+                    });
+                </script>
+            </form>
+
         </div>
     </div>
 

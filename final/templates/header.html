@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block title %}{% endblock title %}</title>
     <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
     <link rel="stylesheet" href="{%static 'css/Homepage.css'%}">
     <link rel="stylesheet" href="{%static 'css/profile_user.css'%}">
@@ -33,6 +33,18 @@
         .footer {
             width: 103%;
         }
+    }
+
+    .overfola {
+
+        color: black;
+        padding: 15px;
+        width: 100%;
+        height: 100px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        border: 1px solid #ccc;
+
     }
 </style>
 
@@ -74,17 +86,57 @@
     </div>
     <div class="profileuser">
         {% if user.is_authenticated %}
-        <div class="User" id="User" style="margin-top: 11%;">
-            <div class="ButtonLS" style="height: 268px;">
-                <img class="" src="../media/{{ userdata.first.avatar }}" alt="">
+        <div class="User" id="User" style="margin-top: 15%;">
+            <div class="ButtonLS" style="height: fit-content;">
+                <img class="" src="../media/{{ userdata.first.avatar }}" alt="" style="    margin-top: 3%;">
                 <h5>
                     {{ user.username }}
                 </h5>
                 <p>{{ user.email }}</p>
                 <hr>
                 <p>Purchase History</p>
-                <a href="{% url 'onedaytwogether:Logout' %}"><button>Logout</button></a>
-                <a href="{% url 'onedaytwogether:CompleteProfile' %}"><button>Complete your Profile</button></a>
+                <div class="overfola">
+                    <table>
+                        <tr>
+                            <td>Product</td>
+                            <td>Price
+
+                            </td>
+                            <td>Status
+
+                            </td>
+                        </tr>
+                        {% for i in purchase_history %}
+                        <tr>
+                            <td style="    font-size: smaller;">
+                                {{ i.Product_name }}
+                            </td>
+                            <td style="    font-size: smaller;">
+                                {{ i.Cost }}$
+                            </td>
+                            {% if i.status == True %}
+                            <td style="    font-size: smaller;color: green;">
+                                Completed
+                            </td>
+                            {% else %}
+
+                            <td style="    font-size: smaller;color: red;">
+                                Pending
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <a href="{% url 'onedaytwogether:Logout' %}"><button class="btn btn-danger">Logout</button></a>
+                {% if userdata.first.status %}
+                <a href="{% url 'onedaytwogether:CompleteProfile' %}"><button class="btn btn-success">Edits your
+                        Profile</button></a>
+                {% else %}
+                <a href="{% url 'onedaytwogether:CompleteProfile' %}"><button class="btn btn-success">Completed your
+                        Profile</button></a>
+                {% endif %}
             </div>
         </div>
         {% else %}
