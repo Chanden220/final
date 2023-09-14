@@ -20,9 +20,10 @@ class HomeView(View):
     
     def get(self, request):
         current_user = request.user.id
+        destination=Destination.objects.all()
         userdata = User_Profile.objects.filter(Users=current_user)
         purchasehis=Purchase_History.objects.filter(User=current_user)
-        return render(request, self.template_name, {'userdata': userdata,'purchase_history':purchasehis})
+        return render(request, self.template_name, {'desdata':destination,'userdata': userdata,'purchase_history':purchasehis})
 class DestinationView(View):
     template_name = 'Destination.html'
 
@@ -186,8 +187,25 @@ class BookingDeleteView(View):
         Carts = get_object_or_404(Contact, id=id,User=current_user)
         Carts.delete()
         return redirect('onedaytwogether:Booking')
-
-
+class AdminBookingApproveView(View):
+    def get(self, request,id):   
+        if request.user.is_superuser: 
+            booking = get_object_or_404(Contact, id=id)
+            booking.status = True
+            booking.save()
+            return redirect('onedaytwogether:AdminBooking')
+        else:
+            return redirect('onedaytwogether:index')
+class AdminBookingDeclineView(View):
+    def get(self, request, id):   
+        if request.user.is_superuser: 
+            booking = get_object_or_404(Contact, id=id)
+            booking.status = False
+            booking.save()
+            return redirect('onedaytwogether:AdminBooking')
+        else:
+            return redirect('onedaytwogether:index')
+        
 class ShopDetailView(View):
     template_name = 'product-detail.html'
     
@@ -258,6 +276,34 @@ class AboutusView(View):
         userdata = User_Profile.objects.filter(Users=current_user)
         purchasehis=Purchase_History.objects.filter(User=current_user)
         return render(request, self.template_name,{'userdata': userdata,'purchase_history':purchasehis})
+class AdminBookingView(View):
+    template_name = 'adminbook.html'
+    def get(self, request):   
+        if request.user.is_superuser: 
+            
+            
+            contact_data = Contact.objects.all()
+            search_query = request.GET.get('q')
+            print(search_query)
+            
+            if search_query:
+                contact_data = contact_data.filter(
+                    Q(Name__icontains=search_query) 
+                )  
+            return render(request, self.template_name,{'data':contact_data})
+        else:
+            return redirect('onedaytwogether:index')
+    def post(self, request):   
+        if request.user.is_superuser:   
+            current_user = request.user.id
+            
+            contact_data = Contact.objects.filter(User=current_user)
+            
+            return render(request, self.template_name,{'data':contact_data})
+        else:
+            return redirect('onedaytwogether:index')
+        
+        
 class BookingView(View):
     template_name = 'booking.html'
     

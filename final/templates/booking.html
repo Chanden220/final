@@ -49,8 +49,10 @@
           {% else %}
           <td style="color: green;">Approve</td>
           {% endif %}
-          <td><a href="/onedaytwogether/Booking/Delete/{{ item.id }}"><button class="btn btn-danger">Cancel</button></a>
-          </td>
+          <td>
+            {% if item.status == False %}<a href="/onedaytwogether/Booking/Delete/{{ item.id }}"><button class="btn btn-danger">Cancel</button></a>
+          {% else %}<p style="color: red;">You can't cancel</p>
+          {% endif %}</td>
         </tr>
         {% endfor %}
       </tbody>

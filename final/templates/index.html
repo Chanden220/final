@@ -195,7 +195,7 @@
             </center>
         </div>
         <div class="info-img">
-            <img class="classA" src="{%static 'img/camp3.jpg'%}" alt="">
+            <img loading="lazy" class="classA" src="{%static 'img/camp3.jpg'%}" alt="">
 
         </div>
     </div>
@@ -257,7 +257,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="des1 d-flex flex-column">
-                    <a href="FirstDestination.html"><img src="{%static 'img/kp.jpg'%}" alt=""></a>
+                    <a href="FirstDestination.html"><img loading="lazy" src="../../../media/{{ desdata.first.Image }}" alt=""></a>
                     <div class="overlay">
                         <div class="d-flex flex-column">
                             <p>We offer you a place and a wide range of camping supplies to make your selection
@@ -266,12 +266,14 @@
                                     more</button></a>
                         </div>
                     </div>
-                    <p class="text-center mt-2">Image 1</p>
+                    <p class="text-center mt-2">{{ desdata.first.destination }}</p>
                 </div>
             </div>
             <div class="col-md-4 offset-md-4">
                 <div class="des1 d-flex flex-column">
-                    <a href="FirstDestination.html"><img src="{%static 'img/kp.jpg'%}" alt=""></a>
+                    {% for i in desdata %}
+                    {% if i.id == 2 %}
+                    <a href="FirstDestination.html"><img loading="lazy" src="../../../media/{{ i.Image }}" alt=""></a>
                     <div class="overlay">
                         <div class="d-flex flex-column">
                             <p>We offer you a place and a wide range of camping supplies to make your selection
@@ -280,7 +282,10 @@
                                     more</button></a>
                         </div>
                     </div>
-                    <p class="text-center mt-2">Image 2</p>
+                    <p class="text-center mt-2">{{ i.destination }}</p>
+                    {% else %}
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -289,7 +294,9 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="des1 d-flex flex-column">
-                    <a href="FirstDestination.html"><img src="{%static 'img/kp.jpg'%}" alt=""></a>
+                    {% for i in desdata %}
+                    {% if i.id == 3 %}
+                    <a href="FirstDestination.html"><img loading="lazy" src="../../../media/{{ i.Image }}" alt=""></a>
                     <div class="overlay">
                         <div class="d-flex flex-column">
                             <p>We offer you a place and a wide range of camping supplies to make your selection
@@ -298,7 +305,10 @@
                                     more</button></a>
                         </div>
                     </div>
-                    <p class="text-center mt-2">Image 3</p>
+                    <p class="text-center mt-2">{{ i.destination }}</p>
+                    {% else %}
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -326,7 +336,7 @@
     <div style="width: 100%;">
     </div>
     <div class="footer1">
-        <img src="{%static 'img/foot3.png'%}" alt="">
+        <img loading="lazy" src="{%static 'img/foot3.png'%}" alt="">
 
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

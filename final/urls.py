@@ -23,5 +23,5 @@ from onedaytwogether.views import *
 urlpatterns = [
     
     path('admin/', admin.site.urls), 
-    path('onedaytwogether/', include('onedaytwogether.urls')),
+    path('', include('onedaytwogether.urls')),
 ]
